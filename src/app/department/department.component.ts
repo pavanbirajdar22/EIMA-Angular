@@ -21,7 +21,6 @@ export class DepartmentComponent implements OnInit {
   constructor(private departmentService: DepartmentService, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit() {
-    console.log(this.activatedRoute);
     this.activatedRoute.params.subscribe(params => {
       this.deptId = +params['deptId'];
       this.departmentService.getDepartmentById(this.deptId).subscribe(department => this.department = department);

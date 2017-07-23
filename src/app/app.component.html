@@ -1,6 +1,6 @@
 <div
 	class="navbar navbar-default"
-	style="margin-bottom:0px"
+	style="margin-bottom: 0px"
 	role="navigation">
 	<div class="container-fluid">
 		<div class="navbar-header">
@@ -9,9 +9,8 @@
 				class="navbar-toggle"
 				data-toggle="collapse"
 				data-target=".navbar-collapse">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
+				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
 			</button>
 			<a
 				class="navbar-brand"
@@ -19,15 +18,9 @@
 		</div>
 		<div class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
-				<li class="active">
-					<a href="#">Home</a>
-				</li>
-				<li>
-					<a href="#about">About</a>
-				</li>
-				<li>
-					<a href="#contact">Contact</a>
-				</li>
+				<li class="active"><a href="#">Home</a></li>
+				<li><a href="#about">About</a></li>
+				<li><a href="#contact">Contact</a></li>
 			</ul>
 		</div>
 	</div>
@@ -41,41 +34,28 @@
 			role="navigation">
 			<div class="sidebar-nav">
 				<ul class="nav">
-
-					<li class="active">
-						<a href="#">View Profile</a>
-					</li>
-					<li>
-						<a href="#">Edit Profile</a>
-					</li>
-					<li>
-						<a routerLink="/employees">All Employees</a>
-					</li>
-					<li>
-						<a routerLink="/projects">Projects</a>
-					</li>
-					<li>
-						<a routerLink="/clients">Clients</a>
-					</li>
-					<li>
-						<a routerLink="/departments">Department</a>
-					</li>
+					<li class="active"><a routerLink="/dashboard" [class.active]="">My Dashboard</a></li>
+					<li><a routerLink="/profile">View Profile</a></li>
+					<li><a routerLink="/edit">Edit Profile</a></li>
+					<li><a routerLink="/employees">All Employees</a></li>
+					<li><a routerLink="/projects">Projects</a></li>
+					<li><a routerLink="/clients">Clients</a></li>
+					<li><a routerLink="/departments">Department</a></li>
 				</ul>
 			</div>
 		</div>
 
 		<div class="col-xs-10 col-sm-10 col-md-10">
-		<router-outlet></router-outlet>
+			<router-outlet></router-outlet>
 		</div>
 
 
 	</div>
-	
-	<footer
-	style="bottom: 0; height: 80px; margin-top: 30px; width:100%">
-	<hr>
-	<p>Wissen Technology</p>
-</footer>
+
+	<footer style="bottom: 0; height: 80px; margin-top: 30px; width: 100%">
+		<hr>
+		<p>Wissen Technology</p>
+	</footer>
 
 </div>
 

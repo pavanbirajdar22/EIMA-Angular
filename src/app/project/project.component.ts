@@ -21,7 +21,6 @@ export class ProjectComponent implements OnInit {
   constructor(private projectService: ProjectService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    console.log(this.activatedRoute);
     this.activatedRoute.params.subscribe(params => {
       this.pid = +params['pid'];
       console.log(this.pid);

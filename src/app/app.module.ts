@@ -51,6 +51,18 @@ const routes = [
   {
     path: 'project/:pid',
     component: ProjectComponent,
+  },
+  {
+    path: 'employee/:eid',
+    component: EmployeeComponent,
+  },
+  {
+    path: 'department/:deptId',
+    component: DepartmentComponent,
+  },
+  {
+    path: 'client/:cid',
+    component: ClientComponent,
   }
 ]
 

@@ -21,7 +21,6 @@ export class EmployeeComponent implements OnInit {
   constructor(private userService: UserService, private ar: ActivatedRoute) {}
 
   ngOnInit() {
-    console.log(this.ar);
     this.ar.params.subscribe(params => {
       this.employeeId = +params['eid'];
       this.userService.getDepartmentById(this.employeeId).subscribe(dept => this.department = dept);

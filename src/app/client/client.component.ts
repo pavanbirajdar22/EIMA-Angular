@@ -21,7 +21,6 @@ export class ClientComponent implements OnInit {
   constructor(private clientService: ClientService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    console.log(this.activatedRoute);
     this.activatedRoute.params.subscribe(params => {
       this.cid = +params['cid'];
       this.clientService.getClientById(this.cid).subscribe(client => this.client = client);
