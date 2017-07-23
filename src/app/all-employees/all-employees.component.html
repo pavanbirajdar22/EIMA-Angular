@@ -1,0 +1,39 @@
+<div class="container">
+	<md-paginator
+		[length]="totalEmployeeCount"
+		[pageSize]="4"
+		(page)="onPageChange($event)"> </md-paginator>
+	<div class="row">
+		<div class="col-md-7 col-xs-7">
+			<ul style="list-style-type: none;">
+				<li *ngFor="let employee of employees">
+					<md-card
+						style="cursor:pointer"
+						[routerLink]="['/employees',employee['eid']]">
+					<div class="row">
+						<div class="col-md-2">
+							<img
+								md-card-avatar
+								style="width: 70px; height: 70px"
+								src="https://pbs.twimg.com/profile_images/716487122224439296/HWPluyjs.jpg" />
+						</div>
+						<div
+							class="col-md-10"
+							style="word-wrap: break-word">
+							<md-card-header> <md-card-title>
+							<a style="word-break: break-all; white-space: normal;">
+								<b>{{employee['firstName']}}&nbsp;{{employee['middleName']}}&nbsp;{{employee['lastName']}}</b>
+							</a> </md-card-title> <md-card-subtitle>{{employee['designation']}}</md-card-subtitle> <md-card-subtitle>{{employee['departmentName']}}</md-card-subtitle>
+							</md-card-header>
+						</div>
+					</div>
+					</md-card>
+					<span>&nbsp;</span>
+				</li>
+			</ul>
+		</div>
+		<div class="col-md-5 col-xs-5">
+			<router-outlet></router-outlet>
+		</div>
+	</div>
+</div>
