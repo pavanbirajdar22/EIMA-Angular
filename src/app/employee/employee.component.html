@@ -14,38 +14,35 @@
 			style="width: 100%; text-align: center; margin-left: -20px; word-wrap: break-word">{{employee?.firstName}}&nbsp;{{employee?.middleName}}&nbsp;{{employee?.lastName}}</h4>
 		</md-card-header>
 		<h5 style="word-wrap: break-word">
-			<small>Designation: </small>
-			{{employee?.designation}}
+			<small>Designation: </small> {{employee?.designation}}
 		</h5>
-		<h5 style="word-wrap: break-word" *ngIf="department">
-			<small>Department: </small>
-			{{department['deptName']}}
+		<h5
+			style="word-wrap: break-word"
+			*ngIf="department">
+			<small>Department: </small> {{department['deptName']}}
 		</h5>
 		<h5
 			style="word-wrap: break-word"
 			*ngIf="user && user['genderVisible']===1">
-			<small>Gender: </small>
-			{{gender[+employee?.gender]}}
+			<small>Gender: </small> {{gender[+employee?.gender]}}
 		</h5>
 		<h5
 			style="word-wrap: break-word"
 			*ngIf="user && user['dobVisible']===1">
-			<small>DOB: </small>
-			{{employee?.dob | date:"dd-MMM-yyyy"}}
+			<small>DOB: </small> {{employee?.dob | date:"dd-MMM-yyyy"}}
 		</h5>
 		<h5 style="word-wrap: break-word">
-			<small>Joined on: </small>
-			{{employee?.joiningDate | date:"dd-MMM-yyyy"}}
+			<small>Joined on: </small> {{employee?.joiningDate |
+			date:"dd-MMM-yyyy"}}
 		</h5>
 		<h5
 			style="word-wrap: break-word"
 			*ngIf="employee?.leavingDate">
-			<small>Left on: </small>
-			{{employee?.leavingDate | date:"dd-MMM-yyyy"}}
+			<small>Left on: </small> {{employee?.leavingDate |
+			date:"dd-MMM-yyyy"}}
 		</h5>
 		<h5 style="word-wrap: break-word">
-			<small>Phone: </small>
-			{{employee?.phoneNumber}}
+			<small>Phone: </small> {{employee?.phoneNumber}}
 		</h5>
 		<h5
 			style="word-wrap: break-word"
@@ -62,9 +59,9 @@
 				<b>Projects:</b>
 			</h5>
 			<ul style="list-style-type: none; padding-left: 0px; cursor: pointer">
-				<li *ngFor="let project of projects">
-					<a>{{project['title']}}</a>
-				</li>
+				<li *ngFor="let project of projects"><a
+						[routerLink]="[
+						'/project/'+ project['pid']]">{{project['title']}}</a></li>
 			</ul>
 		</div>
 
@@ -74,9 +71,7 @@
 				<b>Clients:</b>
 			</h5>
 			<ul style="list-style-type: none; padding-left: 0px; cursor: pointer">
-				<li *ngFor="let client of clients">
-					<a>{{client['name']}}</a>
-				</li>
+				<li *ngFor="let client of clients"><a>{{client['name']}}</a></li>
 			</ul>
 		</div>
 	</div>

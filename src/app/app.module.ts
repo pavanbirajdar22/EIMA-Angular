@@ -13,11 +13,11 @@ import {HttpModule} from '@angular/http';
 import {AllEmployeesComponent} from './all-employees/all-employees.component';
 import {EmployeeComponent} from './employee/employee.component';
 import {AllProjectsComponent} from './all-projects/all-projects.component';
-import { ProjectComponent } from './project/project.component';
-import { AllDepartmentsComponent } from './all-departments/all-departments.component';
-import { DepartmentComponent } from './department/department.component';
-import { AllClientsComponent } from './all-clients/all-clients.component';
-import { ClientComponent } from './client/client.component';
+import {ProjectComponent} from './project/project.component';
+import {AllDepartmentsComponent} from './all-departments/all-departments.component';
+import {DepartmentComponent} from './department/department.component';
+import {AllClientsComponent} from './all-clients/all-clients.component';
+import {ClientComponent} from './client/client.component';
 
 const routes = [
   {
@@ -47,6 +47,10 @@ const routes = [
     children: [
       {path: ':cid', component: ClientComponent}
     ]
+  },
+  {
+    path: 'project/:pid',
+    component: ProjectComponent,
   }
 ]
 
