@@ -9,6 +9,7 @@ import { ProjectService } from './services/project.service';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
+import {ReactiveFormsModule} from '@angular/forms'
 
 import { AllEmployeesComponent } from './all-employees/all-employees.component';
 import { EmployeeComponent } from './employee/employee.component';
@@ -20,6 +21,7 @@ import { AllClientsComponent } from './all-clients/all-clients.component';
 import { ClientComponent } from './client/client.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ContainerComponent } from './container/container.component';
+import { SearchService } from './services/search.service';
 
 const routes = [
   {
@@ -97,12 +99,13 @@ const routes = [
     BrowserModule,
     HttpModule,
     RouterModule.forRoot(routes),
+    ReactiveFormsModule,
     MdCardModule,
     MdButtonModule,
     BrowserAnimationsModule,
     MdPaginatorModule
   ],
-  providers: [UserService, ProjectService, ClientService, DepartmentService],
+  providers: [UserService, ProjectService, ClientService, DepartmentService,SearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
