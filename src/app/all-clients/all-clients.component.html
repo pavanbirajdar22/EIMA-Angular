@@ -1,34 +1,41 @@
-<div class="container">
-	<md-paginator
-		[length]="totalClientCount"
-		[pageSize]="4"
-		(page)="onPageChange($event)"> </md-paginator>
-	<div class="row">
-		<div class="col-md-7 col-sd-6 col-xs-7">
-			<ul style="list-style-type: none;">
-				<li *ngFor="let client of clients"><md-card
-						style="cursor:pointer"
-						[routerLink]="['/clients',client.cid]">
+<br/>
+<div class="row">
+	<div class="col-md-4 col-sm-4 col-xs-4">
+		<h4><a><b>All Clients</b></a></h4>
+	</div>
+	<div class="col-md-4 col-sm-4 col-xs-4">
+		<ul class="list-inline" style="float:right">
+			<li class="list-inline-item" *ngIf="permissions.addClient===1"><button class="btn btn-primary">Add Client</button></li>
+			<li class="list-inline-item"><button class="btn btn-primary">My Clients</button></li>
+		</ul>
+	</div>
+	<div class="col-md-4 col-sm-4 col-xs-4">
+		<md-paginator [length]="totalClientCount" [pageSize]="4" (page)="onPageChange($event)"> </md-paginator>
+	</div>
+</div>
+<hr/>
+<div class="row">
+	<div class="col-md-7 col-sd-6 col-xs-7">
+		<ul style="list-style-type: none;">
+			<li *ngFor="let client of clients">
+				<md-card style="cursor:pointer" [routerLink]="['/clients',client.cid]">
 					<div class="row">
 						<div class="col-md-2">
-							<img
-								md-card-avatar
-								style="width: 70px; height: 70px"
-								src="https://png.icons8.com/material/1600/00897B/company" />
+							<img md-card-avatar style="width: 70px; height: 70px" src="https://png.icons8.com/material/1600/00897B/company" />
 						</div>
-						<div
-							class="col-md-10"
-							style="word-wrap: break-word">
-							<md-card-header> <md-card-title>
-							<a style="word-break: break-all; white-space: normal;">
+						<div class="col-md-10" style="word-wrap: break-word">
+							<md-card-header>
+								<md-card-title>
+									<a style="word-break: break-all; white-space: normal;">
 								<b>{{client.name}}</b>
-							</a> </md-card-title> <md-card-subtitle>{{client.location}}</md-card-subtitle> </md-card-header>
+							</a> </md-card-title>
+								<md-card-subtitle>{{client.location}}</md-card-subtitle>
+							</md-card-header>
 						</div>
 					</div>
-					</md-card> <span>&nbsp;</span></li>
-			</ul>
-		</div>
-
-		<router-outlet></router-outlet>
+				</md-card> <span>&nbsp;</span></li>
+		</ul>
 	</div>
+
+	<router-outlet></router-outlet>
 </div>

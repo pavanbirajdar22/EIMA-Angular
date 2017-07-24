@@ -1,11 +1,16 @@
-import {Injectable} from '@angular/core';
-import {Http} from '@angular/http'
+import { Injectable } from '@angular/core';
+import { Http } from '@angular/http'
 import 'rxjs/add/operator/map'
 
 @Injectable()
 export class UserService {
 
-  constructor(private http: Http) {}
+  currentUserId: number;
+  currentUser: any;
+  permission: any;
+  employee: any;
+
+  constructor(private http: Http) { }
 
   getAllEmployees(pageNo: number) {
     const apiUrl = 'http://localhost:8080/employees?page=' + pageNo + '&size=4&sort=firstName'
@@ -30,6 +35,10 @@ export class UserService {
 
   getClientsById(eid: number) {
     return this.http.get('http://localhost:8080/employees/' + eid + '/clients').map(user => user.json());
+  }
+
+  getPermissionsById(eid: number) {
+    return this.http.get('http://localhost:8080/users/' + eid + '/permission').map(user => user.json());
   }
 
 }

@@ -1,20 +1,11 @@
-<div
-	class="navbar navbar-default"
-	style="margin-bottom: 0px"
-	role="navigation">
+<div class="navbar navbar-default" style="margin-bottom: 0px" role="navigation">
 	<div class="container-fluid">
 		<div class="navbar-header">
-			<button
-				type="button"
-				class="navbar-toggle"
-				data-toggle="collapse"
-				data-target=".navbar-collapse">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a
-				class="navbar-brand"
-				href="#">EIMA</a>
+			<a class="navbar-brand" href="#">EIMA</a>
 		</div>
 		<div class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
@@ -28,15 +19,11 @@
 
 <div class="container-fluid">
 	<div class="row">
-		<div
-			class="col-xs-2 col-sm-2 col-md-2 sidebar"
-			id="sidebar"
-			role="navigation">
+		<div class="col-xs-2 col-sm-2 col-md-2 sidebar" id="sidebar" role="navigation">
 			<div class="sidebar-nav">
 				<ul class="nav">
-					<li class="active"><a routerLink="/dashboard" [class.active]="">My Dashboard</a></li>
-					<li><a routerLink="/profile">View Profile</a></li>
-					<li><a routerLink="/edit">Edit Profile</a></li>
+					<li><a routerLink="/dashboard" >My Dashboard</a></li>
+					<li><a routerLink="/profile" >My Profile</a></li>
 					<li><a routerLink="/employees">All Employees</a></li>
 					<li><a routerLink="/projects">Projects</a></li>
 					<li><a routerLink="/clients">Clients</a></li>
@@ -46,16 +33,17 @@
 		</div>
 
 		<div class="col-xs-10 col-sm-10 col-md-10">
-			<router-outlet></router-outlet>
+			<div class="container">
+				<router-outlet></router-outlet>
+			</div>
 		</div>
 
 
 	</div>
 
-	<footer style="bottom: 0; height: 80px; margin-top: 30px; width: 100%">
+	<!-- <footer style="bottom: 0; height: 80px; margin-top: 30px; width: 100%">
 		<hr>
 		<p>Wissen Technology</p>
-	</footer>
+	</footer> -->
 
 </div>
-

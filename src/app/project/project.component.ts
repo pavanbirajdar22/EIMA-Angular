@@ -23,7 +23,6 @@ export class ProjectComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
       this.pid = +params['pid'];
-      console.log(this.pid);
       this.projectService.getProjectByPid(this.pid).subscribe(project => this.project = project);
       this.projectService.getClientByPid(this.pid).subscribe(client => this.client = client);
       this.projectService.getTeamByPid(this.pid).subscribe(team => this.team = team._embedded.employees);

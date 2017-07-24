@@ -13,6 +13,7 @@ export class AllProjectsComponent implements OnInit {
 
   projects: Project[] = [];
   totalProjectCount = 0
+  permissions:any;
 
 
   constructor(private router: Router, private projectService: ProjectService) {
@@ -20,6 +21,7 @@ export class AllProjectsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.permissions=JSON.parse(sessionStorage.getItem("currentUserPermission"));
     this.projectService.getAllProjects(0).subscribe(ele => {
       this.totalProjectCount = ele.json().page.totalElements
       this.projects = ele.json()._embedded.projects;

@@ -1,33 +1,39 @@
-<div class="container">
-	<md-paginator
-		[length]="totalDepartmentCount"
-		[pageSize]="4"
-		(page)="onPageChange($event)"> </md-paginator>
-	<div class="row">
-		<div class="col-md-7 col-xs-7">
-			<ul style="list-style-type: none;">
-				<li *ngFor="let department of departments"><md-card
-						style="cursor:pointer"
-						[routerLink]="['/departments',department['deptId']]">
+<br/>
+<div class="row">
+	<div class="col-md-4 col-sm-4 col-xs-4">
+		<h4><a><b>All Departments</b></a></h4>
+	</div>
+	<div class="col-md-4 col-sm-4 col-xs-4">
+		<ul class="list-inline" style="float:right">
+			<li class="list-inline-item" *ngIf="permissions.addDepartment"><button class="btn btn-primary">Add Department</button></li>
+			<li class="list-inline-item"><button class="btn btn-primary">My Department</button></li>
+		</ul>
+	</div>
+	<div class="col-md-4 col-sm-4 col-xs-4">
+		<md-paginator [length]="totalDepartmentCount" [pageSize]="4" (page)="onPageChange($event)"> </md-paginator>
+	</div>
+</div>
+<hr/>
+<div class="row">
+	<div class="col-md-7 col-xs-7">
+		<ul style="list-style-type: none;">
+			<li *ngFor="let department of departments">
+				<md-card style="cursor:pointer" [routerLink]="['/departments',department['deptId']]">
 					<div class="row">
 						<div class="col-md-2">
-							<img
-								md-card-avatar
-								style="width: 70px; height: 70px"
-								src="https://png.icons8.com/material/1600/00897B/department" />
+							<img md-card-avatar style="width: 70px; height: 70px" src="https://png.icons8.com/material/1600/00897B/department" />
 						</div>
-						<div
-							class="col-md-10"
-							style="word-wrap: break-word">
-							<md-card-header> <md-card-title>
-							<a style="word-break: break-all; white-space: normal;">
+						<div class="col-md-10" style="word-wrap: break-word">
+							<md-card-header>
+								<md-card-title>
+									<a style="word-break: break-all; white-space: normal;">
 								<b>{{department.deptName}}</b>
-							</a> </md-card-title> </md-card-header>
+							</a> </md-card-title>
+							</md-card-header>
 						</div>
 					</div>
-					</md-card> <span>&nbsp;</span></li>
-			</ul>
-		</div>
-			<router-outlet></router-outlet>
+				</md-card> <span>&nbsp;</span></li>
+		</ul>
 	</div>
+	<router-outlet></router-outlet>
 </div>

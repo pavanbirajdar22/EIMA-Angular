@@ -13,12 +13,14 @@ export class AllClientsComponent implements OnInit {
 
   clients: Client[] = [];
   totalClientCount = 0
+  permissions:any
 
   constructor(private router: Router, private clientService: ClientService) {
 
   }
 
   ngOnInit() {
+    this.permissions=JSON.parse(sessionStorage.getItem("currentUserPermission"));
     this.clientService.getAllClients(0).subscribe(ele => {
       this.totalClientCount = ele.json().page.totalElements
       this.clients = ele.json()._embedded.clients;

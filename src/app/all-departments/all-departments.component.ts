@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {MdButton, MdCard, MdSidenav, MdSidenavContainer} from '@angular/material';
-import {Router} from '@angular/router'
-import {Department} from '../classes/department';
-import {DepartmentService} from '../services/department.service';
+import { Component, OnInit } from '@angular/core';
+import { MdButton, MdCard, MdSidenav, MdSidenavContainer } from '@angular/material';
+import { Router } from '@angular/router'
+import { Department } from '../classes/department';
+import { DepartmentService } from '../services/department.service';
 
 @Component({
   selector: 'app-all-departments',
@@ -13,12 +13,14 @@ export class AllDepartmentsComponent implements OnInit {
 
   departments: Department[] = [];
   totalDepartmentCount = 0
+  permissions:any
 
   constructor(private router: Router, private departmentService: DepartmentService) {
 
   }
 
   ngOnInit() {
+    this.permissions = JSON.parse(sessionStorage.getItem("currentUserPermission"));
     this.departmentService.getAllDepartments(0).subscribe(ele => {
       this.totalDepartmentCount = ele.json().page.totalElements
       this.departments = ele.json()._embedded.departments;

@@ -1,37 +1,44 @@
-<div class="container">
-	<md-paginator
-		[length]="totalEmployeeCount"
-		[pageSize]="4"
-		(page)="onPageChange($event)"> </md-paginator>
-	<div class="row">
-		<div class="col-md-7 col-xs-7">
-			<ul style="list-style-type: none;">
-				<li *ngFor="let employee of employees">
-					<md-card
-						style="cursor:pointer"
-						[routerLink]="['/employees',employee['eid']]">
+<br/>
+<div class="row">
+	<div class="col-md-4 col-sm-4 col-xs-4">
+		<h4><a><b>All Employees</b></a></h4>
+	</div>
+	<div class="col-md-4 col-sm-4 col-xs-4">
+		<ul class="list-inline" style="float:right">
+			<li class="list-inline-item" *ngIf="permissions.addEmployee===1"><button class="btn btn-primary">Add Employee</button></li>
+		</ul>
+	</div>
+	<div class="col-md-4 col-sm-4 col-xs-4">
+		<md-paginator [length]="totalEmployeeCount" [pageSize]="4" (page)="onPageChange($event)"> </md-paginator>
+	</div>
+</div>
+<hr/>
+
+<div class="row">
+	<div class="col-md-7 col-xs-7">
+		<ul style="list-style-type: none;">
+			<li *ngFor="let employee of employees">
+				<md-card style="cursor:pointer" [routerLink]="['/employees',employee['eid']]">
 					<div class="row">
 						<div class="col-md-2">
-							<img
-								md-card-avatar
-								style="width: 70px; height: 70px"
-								src="https://pbs.twimg.com/profile_images/716487122224439296/HWPluyjs.jpg" />
+							<img md-card-avatar style="width: 70px; height: 70px" src="https://pbs.twimg.com/profile_images/716487122224439296/HWPluyjs.jpg"
+							/>
 						</div>
-						<div
-							class="col-md-10"
-							style="word-wrap: break-word">
-							<md-card-header> <md-card-title>
-							<a style="word-break: break-all; white-space: normal;">
+						<div class="col-md-10" style="word-wrap: break-word">
+							<md-card-header>
+								<md-card-title>
+									<a style="word-break: break-all; white-space: normal;">
 								<b>{{employee['firstName']}}&nbsp;{{employee['middleName']}}&nbsp;{{employee['lastName']}}</b>
-							</a> </md-card-title> <md-card-subtitle>{{employee['designation']}}</md-card-subtitle> <md-card-subtitle>{{employee['departmentName']}}</md-card-subtitle>
+							</a> </md-card-title>
+								<md-card-subtitle>{{employee['designation']}}</md-card-subtitle>
+								<md-card-subtitle>{{employee['departmentName']}}</md-card-subtitle>
 							</md-card-header>
 						</div>
 					</div>
-					</md-card>
-					<span>&nbsp;</span>
-				</li>
-			</ul>
-		</div>
-			<router-outlet></router-outlet>
+				</md-card>
+				<span>&nbsp;</span>
+			</li>
+		</ul>
 	</div>
+	<router-outlet></router-outlet>
 </div>
