@@ -39,7 +39,7 @@
 				</h5>
 				<ul
 					style="list-style-type: none; padding-left: 0px; cursor: pointer">
-					<li><a [routerLink]="['/department/', department['deptId']]">{{department['deptName']}}</a></li>
+					<li><a [routerLink]="['/search/department/', department['deptId']]">{{department['deptName']}}</a></li>
 				</ul>
 			</div>
 
@@ -50,7 +50,7 @@
 				</h5>
 				<ul
 					style="list-style-type: none; padding-left: 0px; cursor: pointer">
-					<li *ngFor="let employee of team"><a [routerLink]="['/employee/', employee['eid']]">{{employee['firstName']}}&nbsp;{{employee['lastName']}}</a>
+					<li *ngFor="let employee of team"><a [routerLink]="['/search/employee/', employee['eid']]">{{employee['firstName']}}&nbsp;{{employee['lastName']}}</a>
 					</li>
 				</ul>
 			</div>

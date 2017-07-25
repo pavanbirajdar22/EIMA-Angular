@@ -22,11 +22,12 @@ import { ClientComponent } from './client/client.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ContainerComponent } from './container/container.component';
 import { SearchService } from './services/search.service';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes = [
   {
-    path: '',
-    component: ContainerComponent,
+    path: 'search',
+    component:ContainerComponent,
     children: [
       {
         path: 'project/:pid',
@@ -43,6 +44,10 @@ const routes = [
       {
         path: 'client/:cid',
         component: ClientComponent,
+      },
+      {
+        path: 'not-found',
+        component: NotFoundComponent,
       }
     ]
   },
@@ -77,6 +82,10 @@ const routes = [
     children: [
       { path: ':cid', component: ClientComponent }
     ]
+  },
+   {
+    path:'**',
+    redirectTo:'/dashboard'
   }
 ]
 
@@ -93,7 +102,8 @@ const routes = [
     AllClientsComponent,
     ClientComponent,
     DashboardComponent,
-    ContainerComponent
+    ContainerComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

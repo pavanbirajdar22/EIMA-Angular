@@ -24,7 +24,7 @@
 				</h5>
 				<ul
 					style="list-style-type: none; padding-left: 0px; cursor: pointer">
-					<li *ngFor="let project of projects"><a [routerLink]="['/project/', project['pid']]">{{project['title']}}</a>
+					<li *ngFor="let project of projects"><a [routerLink]="['/search/project/', project['pid']]">{{project['title']}}</a>
 					</li>
 				</ul>
 			</div>
@@ -36,7 +36,7 @@
 				</h5>
 				<ul
 					style="list-style-type: none; padding-left: 0px; cursor: pointer">
-					<li *ngFor="let employee of employees"><a [routerLink]="['/employee/', employee['eid']]">{{employee['firstName']}}</a>
+					<li *ngFor="let employee of employees"><a [routerLink]="['/search/employee/', employee['eid']]">{{employee['firstName']}}</a>
 					</li>
 				</ul>
 			</div>

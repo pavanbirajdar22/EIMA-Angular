@@ -26,7 +26,7 @@
 								<div class="dropdown dropdown-lg">
 									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
 									<div class="dropdown-menu dropdown-menu-right" role="menu">
-										<form [formGroup]="searchFilter" class="form-horizontal" (ngSubmit)="fetchResults()">
+										<form [formGroup]="searchFilter" class="form-horizontal">
 											<div class="form-group">
 												<label for="filter">Search For</label>
 												<select formControlName="searchFor" class="form-control" (change)="onSearchChange($event.target)">
@@ -39,11 +39,10 @@
 													<option *ngFor="let field of fields[ind],let idx=index" value={{idx}}>{{field}}</option>
                                     			</select>
 											</div>
-											<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 										</form>
 									</div>
 								</div>
-								<button (click)="fetchResults()" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+								<button (click)="fetchResults()" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
 							</div>
 						</div>
 					</div>
@@ -60,7 +59,6 @@
 			<div class="sidebar-nav">
 				<ul class="nav">
 					<li><a routerLink="/dashboard">My Dashboard</a></li>
-					<li><a routerLink="/profile">My Profile</a></li>
 					<li><a routerLink="/employees">All Employees</a></li>
 					<li><a routerLink="/projects">Projects</a></li>
 					<li><a routerLink="/clients">Clients</a></li>
