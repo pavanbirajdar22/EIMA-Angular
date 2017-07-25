@@ -30,8 +30,22 @@ export class AppComponent implements OnInit {
   constructor(private userService: UserService, private router: Router, private fb: FormBuilder, private searchService: SearchService) { }
 
   ngOnInit() {
-    this.userService.getPermissionsById(1).subscribe(permission => { this.permissions = permission; sessionStorage.setItem("currentUserPermission", JSON.stringify(this.permissions)) });
-    this.userService.getUserById(1).subscribe(user => { this.user = user; sessionStorage.setItem("currentUser", JSON.stringify(this.user)) });
+    this.userService.getPermissionsById(1).subscribe(permission => { 
+      this.permissions = permission; 
+      sessionStorage.setItem("currentUserPermission",JSON.stringify(this.permissions))
+    });
+
+    this.userService.getUserById(1).subscribe(user => {
+      this.user = user; 
+      sessionStorage.setItem("currentUser", JSON.stringify(this.user))
+    });
+
+    this.userService.getEmployeeById(1).subscribe(employee => { 
+      sessionStorage.setItem("currentEmployee", 
+      JSON.stringify(employee)) 
+    });
+
+    sessionStorage.setItem("currentUserId",'3');
 
     this.searchFilter = this.fb.group({
       searchFor: [0],
@@ -54,13 +68,13 @@ export class AppComponent implements OnInit {
       let table = this.queryTables[this.ind];
       let field = this.queryFields[this.ind][this.searchFilter.controls.searchBy.value]
       let param = field.substr(0, 1).toLowerCase() + field.substr(1)
-      if(param!=='eid')
-        field=field+'Contains'
+      if (param !== 'eid')
+        field = field + 'Contains'
       this.searchService.search('http://localhost:8080/' + table + '/search/findBy' + field + '?' + param + '=' + barValue).subscribe(ele => {
         let url1 = ele._links.self.href.split('/')[3]
         url1 = url1.substr(0, url1.length - 1)
         let url2 = ele._links.self.href.split('/')[4]
-        this.router.navigate(['search/'+url1 + '/' + url2]);
+        this.router.navigate(['search/' + url1 + '/' + url2]);
       }, err => {
         this.router.navigate(['/search/not-found']);
       });

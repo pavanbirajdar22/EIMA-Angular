@@ -11,6 +11,11 @@ export class DepartmentService {
     return this.http.get(apiUrl);
   }
 
+  getMyDepartment(eid:number) {
+    const apiUrl = 'http://localhost:8080/employees/'+eid+'/department';
+    return this.http.get(apiUrl);
+  }
+
   getDepartmentById(deptId: number) {
     return this.http.get('http://localhost:8080/departments/' + deptId).map(dept => dept.json());
   }

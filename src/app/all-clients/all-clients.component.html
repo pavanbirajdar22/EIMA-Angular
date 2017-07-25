@@ -1,16 +1,16 @@
 <br/>
 <div class="row">
 	<div class="col-md-4 col-sm-4 col-xs-4">
-		<h4><a><b>All Clients</b></a></h4>
+		<h4><a><b>{{showButton[1-toggleFlag]}}</b></a></h4>
 	</div>
 	<div class="col-md-4 col-sm-4 col-xs-4">
 		<ul class="list-inline" style="float:right">
 			<li class="list-inline-item" *ngIf="permissions.addClient===1"><button class="btn btn-primary">Add Client</button></li>
-			<li class="list-inline-item"><button class="btn btn-primary">My Clients</button></li>
+			<li class="list-inline-item"><button class="btn btn-primary" (click)="showMyClients()">{{showButton[toggleFlag]}}</button></li>
 		</ul>
 	</div>
 	<div class="col-md-4 col-sm-4 col-xs-4">
-		<md-paginator [length]="totalClientCount" [pageSize]="4" (page)="onPageChange($event)"> </md-paginator>
+		<md-paginator [length]="totalClientCount" [pageSize]="4"  (page)="onPageChange($event)"> </md-paginator>
 	</div>
 </div>
 <hr/>

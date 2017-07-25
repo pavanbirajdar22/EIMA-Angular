@@ -8,7 +8,12 @@ export class ProjectService {
   constructor(private http: Http) {}
 
   getAllProjects(pageNo: number) {
-    const apiUrl = 'http://localhost:8080/projects?page=' + pageNo + '&size=4sort=name'
+    const apiUrl = 'http://localhost:8080/projects?page=' + pageNo + '&size=4&sort=name'
+    return this.http.get(apiUrl);
+  }
+
+  getMyProjects(eid:number) {
+    const apiUrl = 'http://localhost:8080/employees/'+eid+'/projects';
     return this.http.get(apiUrl);
   }
 

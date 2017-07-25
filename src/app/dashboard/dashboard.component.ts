@@ -8,9 +8,13 @@ import {MdCard} from '@angular/material'
 })
 export class DashboardComponent implements OnInit {
 
+  currentEmployee:any;
+  gender:["Male","Female"]
+
   constructor() { }
 
   ngOnInit() {
+    this.currentEmployee=JSON.parse(sessionStorage.getItem("currentEmployee"));
   }
 
 }

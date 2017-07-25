@@ -7,7 +7,12 @@ export class ClientService {
   constructor(private http: Http) {}
 
   getAllClients(pageNo: number) {
-    const apiUrl = 'http://localhost:8080/clients?page=' + pageNo + '&size=4sort=name'
+    const apiUrl = 'http://localhost:8080/clients?page=' + pageNo + '&size=4&sort=name'
+    return this.http.get(apiUrl);
+  }
+
+  getMyClients(eid:number) {
+    const apiUrl = 'http://localhost:8080/employees/'+eid+'/clients';
     return this.http.get(apiUrl);
   }
 
