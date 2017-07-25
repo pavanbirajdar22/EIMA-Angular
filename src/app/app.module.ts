@@ -9,7 +9,7 @@ import { ProjectService } from './services/project.service';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
-import {ReactiveFormsModule} from '@angular/forms'
+import { ReactiveFormsModule } from '@angular/forms'
 
 import { AllEmployeesComponent } from './all-employees/all-employees.component';
 import { EmployeeComponent } from './employee/employee.component';
@@ -23,11 +23,15 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ContainerComponent } from './container/container.component';
 import { SearchService } from './services/search.service';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { LoginComponent } from './login/login.component';
+import { LoginAuthService } from './services/login-auth.service';
+import { LoginService } from './services/login.service';
 
 const routes = [
   {
     path: 'search',
-    component:ContainerComponent,
+    component: ContainerComponent,
+    canActivate: [LoginAuthService],
     children: [
       {
         path: 'project/:pid',
@@ -54,10 +58,12 @@ const routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
+    canActivate: [LoginAuthService]
   },
   {
     path: 'employees',
     component: AllEmployeesComponent,
+    canActivate: [LoginAuthService],
     children: [
       { path: ':eid', component: EmployeeComponent }
     ]
@@ -65,6 +71,7 @@ const routes = [
   {
     path: 'projects',
     component: AllProjectsComponent,
+    canActivate: [LoginAuthService],
     children: [
       { path: ':pid', component: ProjectComponent }
     ]
@@ -72,6 +79,7 @@ const routes = [
   {
     path: 'departments',
     component: AllDepartmentsComponent,
+    canActivate: [LoginAuthService],
     children: [
       { path: ':deptId', component: DepartmentComponent }
     ]
@@ -79,13 +87,19 @@ const routes = [
   {
     path: 'clients',
     component: AllClientsComponent,
+    canActivate: [LoginAuthService],
     children: [
       { path: ':cid', component: ClientComponent }
     ]
   },
-   {
-    path:'**',
-    redirectTo:'/dashboard'
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: '**',
+    redirectTo: '/dashboard',
+    canActivate: [LoginAuthService]
   }
 ]
 
@@ -103,7 +117,8 @@ const routes = [
     ClientComponent,
     DashboardComponent,
     ContainerComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -115,7 +130,7 @@ const routes = [
     BrowserAnimationsModule,
     MdPaginatorModule
   ],
-  providers: [UserService, ProjectService, ClientService, DepartmentService,SearchService],
+  providers: [UserService, ProjectService, ClientService, DepartmentService, SearchService,LoginAuthService,LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

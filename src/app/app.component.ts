@@ -32,21 +32,20 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.userService.getPermissionsById(1).subscribe(permission => { 
       this.permissions = permission; 
-      sessionStorage.setItem("currentUserPermission",JSON.stringify(this.permissions))
+      //sessionStorage.setItem("currentUserPermission",JSON.stringify(this.permissions))
     });
 
     this.userService.getUserById(1).subscribe(user => {
       this.user = user; 
-      sessionStorage.setItem("currentUser", JSON.stringify(this.user))
+      //sessionStorage.setItem("currentUser", JSON.stringify(this.user))
     });
 
     this.userService.getEmployeeById(1).subscribe(employee => { 
-      sessionStorage.setItem("currentEmployee", 
-      JSON.stringify(employee)) 
+      //sessionStorage.setItem("currentEmployee", JSON.stringify(employee)) 
     });
 
-    sessionStorage.setItem("currentUserId",'3');
-
+    //sessionStorage.setItem("currentUserId",'3');
+    //sessionStorage.clear();
     this.searchFilter = this.fb.group({
       searchFor: [0],
       searchBy: [0]
@@ -79,6 +78,11 @@ export class AppComponent implements OnInit {
         this.router.navigate(['/search/not-found']);
       });
     }
+  }
+
+  logout(){
+    sessionStorage.clear()
+    this.router.navigate(['\login'])
   }
 
 }
