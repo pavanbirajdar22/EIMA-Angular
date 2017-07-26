@@ -45,4 +45,14 @@ export class UserService {
     return this.http.get('http://localhost:8080/employees/' + eid + '/manager').map(user => user.json());
   }
 
+  getAllEmployeesHiredBetween(fromDate: String, toDate: String) {
+    const apiUrl = 'http://localhost:8080/employee/hired?fromDate=' + fromDate + '&toDate=' + toDate;
+    return this.http.get(apiUrl);
+  }
+
+  getAllEmployeesLeftBetween(fromDate: String, toDate: String) {
+    const apiUrl = 'http://localhost:8080/employee/left?fromDate=' + fromDate + '&toDate=' + toDate;
+    return this.http.get(apiUrl);
+  }
+
 }

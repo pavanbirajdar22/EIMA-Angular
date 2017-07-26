@@ -1,0 +1,225 @@
+<div class="container">
+  <p></p>
+
+  <!-- Reports DropDown  -->
+  <div class="form-group">
+    <label for="select1">Reports:</label>
+    <select class="form-control" id="select1" (change)="changeReport($event.target)">
+      <option value="0">None</option>
+      <option value="1">Employees Hired</option>
+      <option value="2">Employees Left</option>
+      <option value="3">Projects Started</option>
+      <option value="4">Completed Projects</option>
+    </select>
+  </div>
+
+  <p></p>
+
+  <br/>
+
+  <!-- Employees Hired -->
+  <md-card *ngIf="selectValue==1">
+    <div>
+      <span style="display:inline-block">
+      <label style="display:block">From Date</label>
+      <input type=date (change)="changeFromDate($event)" class="form-control"/>
+    </span>
+
+      <span style="display:inline-block">
+    <label style="display:block">Till Date</label>
+    <input type=date (change)="changeToDate($event)" class="form-control"/>
+    </span>
+
+      <span style="display:inline-block">
+    <label style="display:block"></label>
+    <button class="btn btn-primary" (click)="getTableData(1)">Submit</button>
+    </span>
+
+      <p></p>
+      <br/>
+      <div *ngIf="showTableFlag">
+        <table class="table table-bordered table-condensed table-hover table-responsive ">
+          <thead class="bg-primary ">
+            <tr>
+              <th>Eid</th>
+              <th>Name</th>
+              <th>Designation</th>
+              <th>JoiningDate</th>
+              <th>LeavingDate</th>
+              <th>Gender</th>
+              <th>Phone No</th>
+              <th>DOB</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let employee of employees; let idx=index ">
+
+              <td>{{employee?.eid}}</td>
+              <td>{{employee?.firstName}}&nbsp;{{employee?.middleName}}&nbsp;{{employee?.lastName}}</td>
+              <td>{{employee?.designation}}</td>
+              <td>{{employee?.joiningDate | date}}</td>
+              <td *ngIf="employee.leavingDate">{{employee?.leavingDate | date}}</td>
+              <td *ngIf="!employee.leavingDate">N/A</td>
+              <td *ngIf="!employee.gender">Male</td>
+              <td *ngIf="employee.gender">Female</td>
+              <td>{{employee?.phoneNumber}}</td>
+              <td *ngIf=employee?.dob>{{employee?.dob | date:"dd-MM-yyyy"}}</td>
+              <td *ngIf=!employee?.dob>N/A</td>
+
+          </tbody>
+        </table>
+        <button class="btn btn-primary" (click)="generateReport()">PDF</button>
+      </div>
+    </div>
+  </md-card>
+
+
+  <!-- Employees Left -->
+  <md-card *ngIf="selectValue==2">
+    <div>
+      <span style="display:inline-block">
+      <label style="display:block">From Date</label>
+      <input type=date (change)="changeFromDate($event)" class="form-control"/>
+    </span>
+
+      <span style="display:inline-block">
+    <label style="display:block">Till Date</label>
+    <input type=date (change)="changeToDate($event)" class="form-control"/>
+    </span>
+
+      <span style="display:inline-block">
+    <label style="display:block"></label>
+    <button class="btn btn-primary" (click)="getTableData(2)">Submit</button>
+    </span>
+
+      <p></p>
+      <br/>
+      <div *ngIf="showTableFlag">
+        <table class="table table-bordered table-condensed table-hover table-responsive ">
+          <thead class="bg-primary ">
+            <tr>
+              <th>Eid</th>
+              <th>Name</th>
+              <th>Designation</th>
+              <th>JoiningDate</th>
+              <th>LeavingDate</th>
+              <th>Gender</th>
+              <th>Phone No</th>
+              <th>DOB</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let employee of employees; let idx=index ">
+
+              <td>{{employee?.eid}}</td>
+              <td>{{employee?.firstName}}&nbsp;{{employee?.middleName}}&nbsp;{{employee?.lastName}}</td>
+              <td>{{employee?.designation}}</td>
+              <td>{{employee?.joiningDate | date}}</td>
+              <td *ngIf="employee.leavingDate">{{employee?.leavingDate | date}}</td>
+              <td *ngIf="!employee.leavingDate">N/A</td>
+              <td *ngIf="!employee.gender">Male</td>
+              <td *ngIf="employee.gender">Female</td>
+              <td>{{employee?.phoneNumber}}</td>
+              <td *ngIf=employee?.dob>{{employee?.dob | date:"dd-MM-yyyy"}}</td>
+              <td *ngIf=!employee?.dob>N/A</td>
+
+          </tbody>
+        </table>
+        <button class="btn btn-primary" (click)="generateReport(2) ">PDF</button>
+      </div>
+    </div>
+  </md-card>
+
+  <!-- Projects Started-->
+  <md-card *ngIf="selectValue==3">
+    <div>
+      <span style="display:inline-block">
+      <label style="display:block">From Date</label>
+      <input type=date (change)="changeFromDate($event)" class="form-control"/>
+    </span>
+
+      <span style="display:inline-block">
+    <label style="display:block">Till Date</label>
+    <input type=date (change)="changeToDate($event)" class="form-control"/>
+    </span>
+
+      <span style="display:inline-block">
+    <label style="display:block"></label>
+    <button class="btn btn-primary" (click)="getTableData(3)">Submit</button>
+    </span>
+
+      <p></p>
+      <br/>
+      <div *ngIf="showTableFlag">
+        <table class="table table-bordered table-condensed table-hover table-responsive ">
+          <thead class="bg-primary ">
+            <tr>
+              <th>Pid</th>
+              <th>Title</th>
+              <th>StartDate</th>
+              <th>EndDate</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let project of projects; let idx=index ">
+
+              <td>{{project?.pid}}</td>
+              <td>{{project?.title}}</td>
+              <td>{{project?.startDate | date}}</td>
+              <td *ngIf="project.endDate">{{project?.endDate | date}}</td>
+              <td *ngIf="!project.endDate">N/A</td>
+
+          </tbody>
+        </table>
+        <button class="btn btn-primary" (click)="generateReport(3) ">PDF</button>
+      </div>
+    </div>
+  </md-card>
+
+  <!-- Projects Completed -->
+  <md-card *ngIf="selectValue==4">
+    <div>
+      <span style="display:inline-block">
+      <label style="display:block">From Date</label>
+      <input type=date (change)="changeFromDate($event)" class="form-control"/>
+    </span>
+
+      <span style="display:inline-block">
+    <label style="display:block">Till Date</label>
+    <input type=date (change)="changeToDate($event)" class="form-control"/>
+    </span>
+
+      <span style="display:inline-block">
+    <label style="display:block"></label>
+    <button class="btn btn-primary" (click)="getTableData(4)">Submit</button>
+    </span>
+
+      <p></p>
+      <br/>
+      <div *ngIf="showTableFlag">
+        <table class="table table-bordered table-condensed table-hover table-responsive ">
+          <thead class="bg-primary ">
+            <tr>
+              <th>Pid</th>
+              <th>Title</th>
+              <th>StartDate</th>
+              <th>EndDate</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let project of projects; let idx=index ">
+
+              <td>{{project?.pid}}</td>
+              <td>{{project?.title}}</td>
+              <td>{{project?.startDate | date}}</td>
+              <td *ngIf="project.endDate">{{project?.endDate | date}}</td>
+              <td *ngIf="!project.endDate">N/A</td>
+
+          </tbody>
+        </table>
+        <button class="btn btn-primary" (click)="generateReport(4) ">PDF</button>
+      </div>
+    </div>
+  </md-card>
+
+</div>

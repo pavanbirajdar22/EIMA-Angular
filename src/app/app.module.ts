@@ -27,6 +27,7 @@ import { LoginComponent } from './login/login.component';
 import { LoginAuthService } from './services/login-auth.service';
 import { LoginService } from './services/login.service';
 import { HomeComponent } from './home/home.component';
+import { ReportComponent } from './report/report.component';
 
 const routes = [
   {
@@ -74,6 +75,11 @@ const routes = [
         children: [
           { path: ':cid', component: ClientComponent }
         ]
+      },
+      {
+        path: 'reports',
+        component: ReportComponent,
+        canActivate: [LoginAuthService],
       },
       {
         path: 'search',
@@ -126,7 +132,8 @@ const routes = [
     ContainerComponent,
     NotFoundComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    ReportComponent
   ],
   imports: [
     BrowserModule,
