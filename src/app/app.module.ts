@@ -26,80 +26,87 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginComponent } from './login/login.component';
 import { LoginAuthService } from './services/login-auth.service';
 import { LoginService } from './services/login.service';
+import { HomeComponent } from './home/home.component';
 
 const routes = [
   {
-    path: 'search',
-    component: ContainerComponent,
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: '',
+    component: HomeComponent,
     canActivate: [LoginAuthService],
     children: [
       {
-        path: 'project/:pid',
-        component: ProjectComponent,
+        path: 'dashboard',
+        component: DashboardComponent,
+        canActivate: [LoginAuthService],
       },
       {
-        path: 'employee/:eid',
-        component: EmployeeComponent,
+        path: 'employees',
+        component: AllEmployeesComponent,
+        canActivate: [LoginAuthService],
+        children: [
+          { path: ':eid', component: EmployeeComponent }
+        ]
       },
       {
-        path: 'department/:deptId',
-        component: DepartmentComponent,
+        path: 'projects',
+        component: AllProjectsComponent,
+        canActivate: [LoginAuthService],
+        children: [
+          { path: ':pid', component: ProjectComponent }
+        ]
       },
       {
-        path: 'client/:cid',
-        component: ClientComponent,
+        path: 'departments',
+        component: AllDepartmentsComponent,
+        canActivate: [LoginAuthService],
+        children: [
+          { path: ':deptId', component: DepartmentComponent }
+        ]
       },
       {
-        path: 'not-found',
-        component: NotFoundComponent,
+        path: 'clients',
+        component: AllClientsComponent,
+        canActivate: [LoginAuthService],
+        children: [
+          { path: ':cid', component: ClientComponent }
+        ]
+      },
+      {
+        path: 'search',
+        component: ContainerComponent,
+        canActivate: [LoginAuthService],
+        children: [
+          {
+            path: 'project/:pid',
+            component: ProjectComponent,
+          },
+          {
+            path: 'employee/:eid',
+            component: EmployeeComponent,
+          },
+          {
+            path: 'department/:deptId',
+            component: DepartmentComponent,
+          },
+          {
+            path: 'client/:cid',
+            component: ClientComponent,
+          },
+          {
+            path: 'not-found',
+            component: NotFoundComponent,
+          }
+        ]
       }
     ]
   },
   {
-    path: 'dashboard',
-    component: DashboardComponent,
-    canActivate: [LoginAuthService]
-  },
-  {
-    path: 'employees',
-    component: AllEmployeesComponent,
-    canActivate: [LoginAuthService],
-    children: [
-      { path: ':eid', component: EmployeeComponent }
-    ]
-  },
-  {
-    path: 'projects',
-    component: AllProjectsComponent,
-    canActivate: [LoginAuthService],
-    children: [
-      { path: ':pid', component: ProjectComponent }
-    ]
-  },
-  {
-    path: 'departments',
-    component: AllDepartmentsComponent,
-    canActivate: [LoginAuthService],
-    children: [
-      { path: ':deptId', component: DepartmentComponent }
-    ]
-  },
-  {
-    path: 'clients',
-    component: AllClientsComponent,
-    canActivate: [LoginAuthService],
-    children: [
-      { path: ':cid', component: ClientComponent }
-    ]
-  },
-  {
-    path: 'login',
-    component: LoginComponent,
-  },
-  {
     path: '**',
-    redirectTo: '/dashboard',
-    canActivate: [LoginAuthService]
+    redirectTo: '/login',
   }
 ]
 
@@ -118,7 +125,8 @@ const routes = [
     DashboardComponent,
     ContainerComponent,
     NotFoundComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -130,7 +138,7 @@ const routes = [
     BrowserAnimationsModule,
     MdPaginatorModule
   ],
-  providers: [UserService, ProjectService, ClientService, DepartmentService, SearchService,LoginAuthService,LoginService],
+  providers: [UserService, ProjectService, ClientService, DepartmentService, SearchService, LoginAuthService, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

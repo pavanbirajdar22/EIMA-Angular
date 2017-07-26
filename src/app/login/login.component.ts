@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MdCard } from '@angular/material';
 import { LoginService } from '../services/login.service';
 import { User } from '../classes/user';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
   message: string;
   loginFlag: boolean = false;
 
-  constructor(private fb: FormBuilder, private service: LoginService) { }
+  constructor(private fb: FormBuilder, private service: LoginService,private router:Router) { }
 
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -36,6 +37,7 @@ export class LoginComponent implements OnInit {
         this.service.eid = resp.user.eid;
         sessionStorage.setItem('currentUserId', resp.user.eid);
         sessionStorage.setItem('currentUserPermission',JSON.stringify(resp.user.permission)); 
+        this.router.navigate(['/dashboard'])
       }
     })
   }
