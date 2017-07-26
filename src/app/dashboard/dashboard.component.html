@@ -71,12 +71,34 @@
         <md-card style="cursor:default">
           <md-card-content style="text-align:center">
             <h5>Completed</h5>
-            <a style="font-size: 70px;text-align: center;width: 100%;text-decoration:none" *ngIf="employee?.leavingDate">{{employee.leavingDate|date:"yyyy"}}-{{employee.joiningDate|date:"yyyy"}}</a>
+            <a style="font-size: 70px;text-align: center;width: 100%;text-decoration:none" *ngIf="employee?.leavingDate">{{+(employee.leavingDate|date:"yyyy")-+(employee.joiningDate|date:"yyyy")}}</a>
             <a style="font-size: 70px;text-align: center;width: 100%;text-decoration:none" *ngIf="!employee?.leavingDate">{{year-+(employee?.joiningDate|date:"yyyy")}}</a><br/>
-          <h5><b>Year(s)</b></h5>
+            <h5><b>Year(s)</b></h5>
           </md-card-content>
         </md-card>
       </div>
     </div>
   </md-card-content>
+  <div *ngIf="manager">
+    <hr/>
+    <h4><b>Your Manager</b></h4>
+    <md-card style="cursor:pointer" [routerLink]="['/search/employee',manager?.eid]">
+      <div class="row">
+        <div class="col-md-2">
+          <img md-card-avatar style="width: 70px; height: 70px" src="https://pbs.twimg.com/profile_images/716487122224439296/HWPluyjs.jpg"
+          />
+        </div>
+        <div class="col-md-10" style="word-wrap: break-word">
+          <md-card-header>
+            <md-card-title>
+              <a style="word-break: break-all; white-space: normal;">
+								<b>{{manager['firstName']}}&nbsp;{{manager['middleName']}}&nbsp;{{manager['lastName']}}</b>
+							</a> </md-card-title>
+            <md-card-subtitle>{{manager['designation']}}</md-card-subtitle>
+          </md-card-header>
+        </div>
+      </div>
+    </md-card>
+  </div>
+
 </md-card>

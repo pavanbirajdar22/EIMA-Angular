@@ -41,4 +41,8 @@ export class UserService {
     return this.http.get('http://localhost:8080/users/' + eid + '/permission').map(user => user.json());
   }
 
+  getManagerById(eid:number){
+    return this.http.get('http://localhost:8080/employees/' + eid + '/manager').map(user => user.json());
+  }
+
 }

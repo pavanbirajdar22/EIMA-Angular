@@ -22,7 +22,7 @@ export class ProjectService {
   }
 
   getClientByPid(pid: number) {
-    return this.http.get('http://localhost:8080/projects/' + pid + '/client').map(client => client.json());
+    return this.http.get('http://localhost:8080/projects/' + pid).map(project => project.json().client);
   }
 
   getTeamByPid(pid: number) {
@@ -30,6 +30,6 @@ export class ProjectService {
   }
 
   getDepartmentByPid(pid: number) {
-    return this.http.get('http://localhost:8080/projects/' + pid + '/department').map(dept => dept.json());
+    return this.http.get('http://localhost:8080/projects/' + pid).map(project => project.json().department);
   }
 }

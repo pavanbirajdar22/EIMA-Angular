@@ -21,6 +21,7 @@ export class DashboardComponent implements OnInit {
   gender = ['Male', 'Female'];
   clientCount: number;
   year:number;
+  manager:any
 
   constructor(private projectService: ProjectService, private clientService: ClientService, private userService: UserService) { }
 
@@ -28,9 +29,16 @@ export class DashboardComponent implements OnInit {
     let user = JSON.parse(sessionStorage.getItem("currentUser"));
     let userId = user.eid
     this.userService.getDepartmentById(userId).subscribe(dept => this.department = dept);
-    this.userService.getEmployeeById(userId).subscribe(employee => {this.employee = employee;console.log(employee)});
+    this.userService.getEmployeeById(userId).subscribe(employee => {this.employee = employee});
     this.userService.getProjectsById(userId).subscribe(projects => this.projectCount = projects._embedded.projects.length);
     this.userService.getClientsById(userId).subscribe(clients => this.clientCount = clients._embedded.clients.length);
+    this.userService.getManagerById(userId).subscribe(manager=>
+      {
+        this.manager=manager,console.log(this.manager)
+      },err=>
+    {
+      this.manager=null;
+    })
     let date:Date=new Date()
     this.year=+date.getFullYear() 
   }
