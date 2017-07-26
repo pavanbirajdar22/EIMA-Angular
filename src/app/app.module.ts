@@ -143,9 +143,9 @@ const routes = [
     MdCardModule,
     MdButtonModule,
     BrowserAnimationsModule,
-    MdPaginatorModule
+    MdPaginatorModule,
   ],
   providers: [UserService, ProjectService, ClientService, DepartmentService, SearchService, LoginAuthService, LoginService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent] 
 })
 export class AppModule { }

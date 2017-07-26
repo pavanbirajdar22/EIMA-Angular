@@ -22,12 +22,14 @@ export class DashboardComponent implements OnInit {
   clientCount: number;
   year:number;
   manager:any
+  permissions:any;
 
   constructor(private projectService: ProjectService, private clientService: ClientService, private userService: UserService) { }
 
   ngOnInit() {
-    let user = JSON.parse(sessionStorage.getItem("currentUser"));
-    let userId = user.eid
+    this.user = JSON.parse(sessionStorage.getItem("currentUser"));
+    let userId = this.user.eid
+    this.permissions=this.user.permission
     this.userService.getDepartmentById(userId).subscribe(dept => this.department = dept);
     this.userService.getEmployeeById(userId).subscribe(employee => {this.employee = employee});
     this.userService.getProjectsById(userId).subscribe(projects => this.projectCount = projects._embedded.projects.length);

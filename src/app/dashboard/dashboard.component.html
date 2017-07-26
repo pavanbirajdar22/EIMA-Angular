@@ -21,10 +21,12 @@
           <small>Department: </small> {{department?.deptName}}
         </h5>
         <h5 style="word-wrap: break-word">
-          <small>Gender: </small> {{gender[+employee?.gender]}}
+          <small>Gender: </small> {{gender[+employee?.gender]}} &nbsp;<span title="Visible to others" *ngIf="user?.genderVisible"
+            class="glyphicon glyphicon-eye-open"></span>
         </h5>
         <h5 style="word-wrap: break-word">
-          <small>DOB: </small> {{employee?.dob | date:"dd-MMM-yyyy"}}
+          <small>DOB: </small> {{employee?.dob | date:"dd-MMM-yyyy"}}&nbsp;<span title="Visible to others" *ngIf="user?.dobVisible"
+            class="glyphicon glyphicon-eye-open"></span>
         </h5>
         <h5 style="word-wrap: break-word">
           <small>Joined on: </small> {{employee?.joiningDate | date:"dd-MMM-yyyy"}}
@@ -38,11 +40,15 @@
         <h5 style="word-wrap: break-word" *ngIf="employee?.addresses[0]">
           <small>Address: </small>
           <p>{{employee?.addresses[0].line1}}, {{employee?.addresses[0].line2}}, {{employee?.addresses[0].city}}-{{employee?.addresses[0].pincode}},
-            {{employee?.addresses[0].state}}, {{employee?.addresses[0].country}}
+            {{employee?.addresses[0].state}}, {{employee?.addresses[0].country}} &nbsp;
+            <span title="Visible to others" *ngIf="user?.addressVisible" class="glyphicon glyphicon-eye-open"></span>
           </p>
         </h5>
         <br/>
-        <button class="btn btn-primary">Edit Details</button>
+        <ul class="list-inline">
+          <button *ngIf="permissions?.editEmployee" class="btn btn-primary">Edit Details</button>
+          <button class="btn btn-primary">Change Visibility</button>
+        </ul>
       </div>
     </div>
     <br/>
@@ -81,7 +87,7 @@
   </md-card-content>
   <div *ngIf="manager">
     <hr/>
-    <h4><b>Your Manager</b></h4>
+    <h4><b>My Manager</b></h4>
     <md-card style="cursor:pointer" [routerLink]="['/search/employee',manager?.eid]">
       <div class="row">
         <div class="col-md-2">

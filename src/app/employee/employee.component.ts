@@ -14,6 +14,7 @@ export class EmployeeComponent implements OnInit {
   employee: any;
   user: any;
   department: string
+  permissions:any
   projects: any = new Array();
   gender = ['Male', 'Female'];
   clients: any = new Array();
@@ -30,8 +31,8 @@ export class EmployeeComponent implements OnInit {
       this.userService.getClientsById(this.employeeId).subscribe(clients => this.clients = clients._embedded.clients);
       // console.log(this.projects);
     });
-
-
+    let user=JSON.parse(sessionStorage.getItem('currentUser'))
+    this.permissions=user.permission
   }
 
 }

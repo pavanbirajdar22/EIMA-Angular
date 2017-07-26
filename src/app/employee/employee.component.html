@@ -56,10 +56,11 @@
 							<li *ngFor="let client of clients"><a [routerLink]="['/search/client/', client['cid']]">{{client['name']}}</a></li>
 						</ul>
 					</div>
+					<br/>
+					<button *ngIf="permissions?.editOtherEmployee" class="btn btn-primary">Edit Permissions</button>
 				</div>
 				<div class="col-md-3 col-xs-3"></div>
 			</div>
-
 		</md-card-content>
 	</md-card>
 </div>
