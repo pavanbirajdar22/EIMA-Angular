@@ -30,22 +30,8 @@ export class HomeComponent implements OnInit {
   constructor(private userService: UserService, private router: Router, private fb: FormBuilder, private searchService: SearchService) { }
 
   ngOnInit() {
-    this.userService.getPermissionsById(1).subscribe(permission => {
-      this.permissions = permission;
-      //sessionStorage.setItem("currentUserPermission",JSON.stringify(this.permissions))
-    });
-
-    this.userService.getUserById(1).subscribe(user => {
-      this.user = user;
-      //sessionStorage.setItem("currentUser", JSON.stringify(this.user))
-    });
-
-    this.userService.getEmployeeById(1).subscribe(employee => {
-      //sessionStorage.setItem("currentEmployee", JSON.stringify(employee)) 
-    });
-
-    //sessionStorage.setItem("currentUserId",'3');
-    //sessionStorage.clear();
+    this.user=JSON.parse(sessionStorage.getItem('currentUser'))
+    this.permissions=this.user.permission
     this.searchFilter = this.fb.group({
       searchFor: [0],
       searchBy: [0]

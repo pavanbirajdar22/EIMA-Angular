@@ -24,13 +24,14 @@ export class AllClientsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.permissions = JSON.parse(sessionStorage.getItem("currentUserPermission"));
+    this.permissions = JSON.parse(sessionStorage.getItem("currentUser")).permission;
+
+    this.userId = this.permissions.eid
+
     this.clientService.getAllClients(0).subscribe(ele => {
       this.totalClientCount = ele.json().page.totalElements
       this.clients = ele.json()._embedded.clients;
     });
-
-    this.userId = +sessionStorage.getItem("currentUserId");
 
     this.clientService.getMyClients(this.userId).subscribe(client => {
       this.myClients = client.json()._embedded.clients
@@ -53,6 +54,7 @@ export class AllClientsComponent implements OnInit {
   showMyClients() {
     if (this.toggleFlag===0) {
       this.toggleFlag=1
+      this.totalClientCount = this.myClients.length
       this.clients=this.myClients.slice(0,4)
     }
     else {

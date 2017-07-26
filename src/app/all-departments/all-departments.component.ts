@@ -17,18 +17,19 @@ export class AllDepartmentsComponent implements OnInit {
   showButton = ['My Department', 'All Departments']
   toggleFlag = 0
   userId: number
-  myDepartment:any
+  myDepartment: any
 
   constructor(private router: Router, private departmentService: DepartmentService) { }
 
   ngOnInit() {
-    this.permissions = JSON.parse(sessionStorage.getItem("currentUserPermission"));
+    this.permissions = JSON.parse(sessionStorage.getItem("currentUser")).permission;
+
+    this.userId = this.permissions.eid
+
     this.departmentService.getAllDepartments(0).subscribe(ele => {
       this.totalDepartmentCount = ele.json().page.totalElements
       this.departments = ele.json()._embedded.departments;
     });
-
-    this.userId = +sessionStorage.getItem("currentUserId");
 
     this.departmentService.getMyDepartment(this.userId).subscribe(dept => {
       this.myDepartment = dept.json()
@@ -46,12 +47,12 @@ export class AllDepartmentsComponent implements OnInit {
   }
 
   showMyDepartment() {
-    if (this.toggleFlag===0) {
-      this.toggleFlag=1
-      this.departments=[this.myDepartment]
+    if (this.toggleFlag === 0) {
+      this.toggleFlag = 1
+      this.departments = [this.myDepartment]
     }
     else {
-      this.toggleFlag=0
+      this.toggleFlag = 0
       this.departmentService.getAllDepartments(0).subscribe(ele => {
         this.totalDepartmentCount = ele.json().page.totalElements
         this.departments = ele.json()._embedded.departments;

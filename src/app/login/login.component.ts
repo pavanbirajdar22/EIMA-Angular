@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.service.getUser(this.loginForm.value).subscribe(resp => {
-      console.log(resp);
+      //console.log(resp);
       if (resp.user === null) {
         this.message = resp.message
         this.loginFlag = true;
@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
         this.user = resp.user;
         this.service.eid = resp.user.eid;
         sessionStorage.setItem('currentUserId', resp.user.eid);
-        sessionStorage.setItem('currentUserPermission',JSON.stringify(resp.user.permission)); 
+        sessionStorage.setItem('currentUser',JSON.stringify(resp.user)); 
         this.router.navigate(['/dashboard'])
       }
     })

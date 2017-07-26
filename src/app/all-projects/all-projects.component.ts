@@ -25,13 +25,13 @@ export class AllProjectsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.permissions = JSON.parse(sessionStorage.getItem("currentUserPermission"));
+    this.permissions = JSON.parse(sessionStorage.getItem("currentUser")).permission;
+    this.userId = this.permissions.eid;
+
     this.projectService.getAllProjects(0).subscribe(ele => {
       this.totalProjectCount = ele.json().page.totalElements
       this.projects = ele.json()._embedded.projects;
     });
-
-    this.userId = +sessionStorage.getItem("currentUserId");
 
     this.projectService.getMyProjects(this.userId).subscribe(projects => {
       this.myProjects = projects.json()._embedded.projects
@@ -52,12 +52,13 @@ export class AllProjectsComponent implements OnInit {
   }
 
   showMyProjects() {
-    if (this.toggleFlag===0) {
-      this.toggleFlag=1
-      this.projects=this.myProjects.slice(0,4)
+    if (this.toggleFlag === 0) {
+      this.toggleFlag = 1
+      this.totalProjectCount = this.myProjects.length
+      this.projects = this.myProjects.slice(0, 4)
     }
     else {
-      this.toggleFlag=0
+      this.toggleFlag = 0
       this.projectService.getAllProjects(0).subscribe(ele => {
         this.totalProjectCount = ele.json().page.totalElements
         this.projects = ele.json()._embedded.projects;

@@ -17,7 +17,8 @@ export class AllEmployeesComponent implements OnInit {
   constructor(private employeeService: UserService, private router: Router) {}
 
   ngOnInit() {
-    this.permissions=JSON.parse(sessionStorage.getItem("currentUserPermission"));
+    let user=JSON.parse(sessionStorage.getItem("currentUser"));
+    this.permissions=user.permission
     this.employeeService.getAllEmployees(0).subscribe(ele => {
       this.totalEmployeeCount = ele.json().page.totalElements
       // console.log(this.totalEmployeeCount);
