@@ -1,0 +1,49 @@
+<br/>
+<div class="row">
+  <div class="col-md-4 col-sm-4 col-xs-4">
+    <h4><a><b>Add New Project</b></a></h4>
+  </div>
+</div>
+<hr/>
+<div class="container">
+  <div class="col-md-7 col-sm-7 col-xs-7">
+    <div class="panel panel-primary">
+      <div class="panel-body">
+        <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="title">Title:</label>
+            <input formControlName="title" type="text" class="form-control" id="title" placeholder="Enter Title">
+            <p *ngIf="projectForm.get('title').touched && projectForm.get('title').hasError('required')" style="color:tomato">This field is required!</p>
+          </div>
+          <div class="form-group">
+            <label for="startDate">Start Date:</label>
+            <input formControlName="startDate" type="date" class="form-control" id="startDate" placeholder="Enter Start Date">
+            <p *ngIf="projectForm.get('startDate').touched && projectForm.get('startDate').hasError('required')" style="color:tomato">This field is required!</p>
+          </div>
+          <div class="form-group">
+            <label for="endDate">End Date:</label>
+            <input formControlName="endDate" type="date" class="form-control" id="endDate" placeholder="Enter End Date">
+            <p *ngIf="projectForm.get('endDate').touched && projectForm.get('endDate').hasError('required')" style="color:tomato">This field is required!</p>
+          </div>
+          <div formGroupName="client">
+            <div class="form-group">
+              <label for="client">Client:</label>
+              <select formControlName="cid" type="text" class="form-control" id="cid" placeholder="Enter Client">
+            <option *ngFor="let client of clients" [value]="client.cid">{{client.name}}</option>
+          </select>
+            </div>
+          </div>
+          <div formGroupName="department">
+            <div class="form-group">
+              <label for="department">Department:</label>
+              <select formControlName="deptId" type="text" class="form-control" id="deptId" placeholder="Enter Department">
+            <option *ngFor="let department of departments" [value]="department.deptId">{{department.deptName}}</option>
+          </select>
+            </div>
+          </div>
+          <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

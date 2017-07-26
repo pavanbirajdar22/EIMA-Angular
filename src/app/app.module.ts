@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
-import { MdCardModule, MdButtonModule, MdPaginatorModule } from '@angular/material';
+import { MdCardModule, MdButtonModule, MdPaginatorModule, MdDialogModule, MdSnackBarModule } from '@angular/material';
 import { RouterModule, ActivatedRouteSnapshot, Router } from '@angular/router'
 import { UserService } from './services/user.service';
 import { ClientService } from './services/client.service';
@@ -28,6 +28,14 @@ import { LoginAuthService } from './services/login-auth.service';
 import { LoginService } from './services/login.service';
 import { HomeComponent } from './home/home.component';
 import { ReportComponent } from './report/report.component';
+import { CreateClientFormComponent } from './custom-forms/create-client-form/create-client-form.component';
+import { CreateProjectFormComponent } from './custom-forms/create-project-form/create-project-form.component';
+import { CreateDepartmentFormComponent } from './custom-forms/create-department-form/create-department-form.component';
+import { CreateEmployeeFormComponent } from './custom-forms/create-employee-form/create-employee-form.component';
+import { CreateEmployeeService } from './custom-forms/create-employee-form/create-employee.service';
+import { CreateProjectService } from './custom-forms/create-project-form/create-project.service';
+import { CreateDepartmentService } from './custom-forms/create-department-form/create-department.service';
+import { CreateClientService } from './custom-forms/create-client-form/create-client.service';
 
 const routes = [
   {
@@ -82,6 +90,26 @@ const routes = [
         canActivate: [LoginAuthService],
       },
       {
+        path: 'add-employee',
+        component: CreateEmployeeFormComponent,
+        canActivate: [LoginAuthService],
+      },
+      {
+        path: 'add-department',
+        component: CreateDepartmentFormComponent,
+        canActivate: [LoginAuthService],
+      },
+      {
+        path: 'add-project',
+        component: CreateProjectFormComponent,
+        canActivate: [LoginAuthService],
+      },
+      {
+        path: 'add-client',
+        component: CreateClientFormComponent,
+        canActivate: [LoginAuthService],
+      },
+      {
         path: 'search',
         component: ContainerComponent,
         canActivate: [LoginAuthService],
@@ -133,7 +161,11 @@ const routes = [
     NotFoundComponent,
     LoginComponent,
     HomeComponent,
-    ReportComponent
+    ReportComponent,
+    CreateClientFormComponent,
+    CreateDepartmentFormComponent,
+    CreateEmployeeFormComponent,
+    CreateProjectFormComponent
   ],
   imports: [
     BrowserModule,
@@ -142,10 +174,24 @@ const routes = [
     ReactiveFormsModule,
     MdCardModule,
     MdButtonModule,
+    MdDialogModule,
+    MdSnackBarModule,
     BrowserAnimationsModule,
     MdPaginatorModule,
   ],
-  providers: [UserService, ProjectService, ClientService, DepartmentService, SearchService, LoginAuthService, LoginService],
-  bootstrap: [AppComponent] 
+  providers: [
+    UserService,
+    ProjectService,
+    ClientService,
+    DepartmentService,
+    SearchService,
+    LoginAuthService,
+    LoginService,
+    CreateEmployeeService,
+    CreateProjectService,
+    CreateDepartmentService,
+    CreateClientService
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

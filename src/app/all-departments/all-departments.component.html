@@ -5,7 +5,7 @@
 	</div>
 	<div class="col-md-4 col-sm-4 col-xs-4">
 		<ul class="list-inline" style="float:right">
-			<li class="list-inline-item" *ngIf="permissions.addDepartment"><button class="btn btn-primary">Add Department</button></li>
+			<li class="list-inline-item" *ngIf="permissions.addDepartment"><button class="btn btn-primary" routerLink="/add-department">Add Department</button></li>
 			<li class="list-inline-item"><button class="btn btn-primary" (click)="showMyDepartment()">{{showButton[toggleFlag]}}</button></li>
 		</ul>
 	</div>

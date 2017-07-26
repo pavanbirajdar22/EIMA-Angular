@@ -1,12 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../services/user.service'
-import {MdCard, MdButton, MdPaginator, PageEvent} from '@angular/material';
+import {MdCard, MdButton, MdPaginator, PageEvent,MdDialog} from '@angular/material';
 import {Router, ActivatedRoute} from '@angular/router'
+import { CreateEmployeeFormComponent } from '../custom-forms/create-employee-form/create-employee-form.component';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-all-employees',
   templateUrl: './all-employees.component.html',
-  styleUrls: ['./all-employees.component.css']
+  styleUrls: ['./all-employees.component.css'],
 })
 export class AllEmployeesComponent implements OnInit {
 
@@ -14,7 +16,7 @@ export class AllEmployeesComponent implements OnInit {
   totalEmployeeCount = 0;
   permissions:any;
 
-  constructor(private employeeService: UserService, private router: Router) {}
+  constructor(private employeeService: UserService, private router: Router,private dialog: MdDialog) {}
 
   ngOnInit() {
     let user=JSON.parse(sessionStorage.getItem("currentUser"));
@@ -33,6 +35,10 @@ export class AllEmployeesComponent implements OnInit {
 
   onPageChange(event) {
     this.employeeService.getAllEmployees(event.pageIndex).subscribe(employee => this.employees = employee.json()._embedded.employees);
+  }
+
+  addEmployee(){
+    this.dialog.open(CreateEmployeeFormComponent);
   }
 
 
