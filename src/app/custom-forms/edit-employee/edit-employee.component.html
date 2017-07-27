@@ -1,0 +1,117 @@
+<br/>
+<div class="row">
+  <div class="col-md-4 col-sm-4 col-xs-4">
+    <h4><a><b>Edit Employee-{{employee.eid}}</b></a></h4>
+  </div>
+</div>
+<hr/>
+<div class="col-md-7 col-sm-7 col-xs-7">
+  <div class="panel panel-primary">
+    <div class="panel-body">
+      <form [formGroup]="editEmployeeForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="fname">FirstName:</label>
+          <input formControlName="firstName" type="text" class="form-control" id="firstName" [placeholder]="employee?.firstName">
+
+        </div>
+        <div class="form-group">
+          <label for="middleName">MiddleName:</label>
+          <input formControlName="middleName" type="text" class="form-control" id="middleName" [placeholder]="employee?.middleName">
+
+        </div>
+        <div class="form-group">
+          <label for="lastName">LastName:</label>
+          <input formControlName="lastName" type="text" class="form-control" id="lastName" [placeholder]="employee?.lastName">
+
+        </div>
+        <div class="form-group">
+          <label for="dob">Date Of  Birth:</label>
+          <input formControlName="dob" type="date" class="form-control" id="dob" [placeholder]="employee?.dob">
+         
+        </div>
+       
+        <div formGroupName="address">
+          <div class="form-group">
+            <label for="line1">Address Line1:</label>
+            <input formControlName="line1" type="text" class="form-control" id="line1" [placeholder]="employee?.addresses[0].line1">
+
+          </div>
+          <div class="form-group">
+            <label for="line2"> Address Line2:</label>
+            <input formControlName="line2" type="text" class="form-control" id="line2" [placeholder]="employee?.addresses[0].line2">
+
+          </div>
+          <div class="form-group">
+            <label for="city">City:</label>
+            <input formControlName="city" type="text" class="form-control" id="city" [placeholder]="employee?.addresses[0].city">
+            
+          </div>
+          <div class="form-group">
+            <label for="state">State:</label>
+            <input formControlName="state" type="text" class="form-control" id="state" [placeholder]="employee?.addresses[0].state">
+           
+          </div>
+          <div class="form-group">
+            <label for="country">Country:</label>
+            <input formControlName="country" type="text" class="form-control" id="country" [placeholder]="employee?.addresses[0].country">
+
+          </div>
+
+          <div class="form-group">
+            <label for="pincode">PinCode:</label>
+            <input formControlName="pincode" type="number" class="form-control" id="pincode" [placeholder]="employee?.addresses[0].pincode" />
+
+          </div>
+
+        </div>
+        <div class="form-group">
+          <label for="salary">Salary:</label>
+          <input formControlName="salary" type="number" class="form-control" id="salary" [placeholder]="+employee?.salary">
+
+        </div>
+        <div class="form-group">
+          <label for="designation">Designation:</label>
+          <input formControlName="designation" type="text" class="form-control" id="designation" [placeholder]="employee?.designation">
+
+        </div>
+        <div class="form-group">
+          <label for="joiningDate">Joining Date:</label>
+          <input formControlName="joiningDate" type="date" class="form-control" id="joiningDate" [placeholder]="employee?.joiningDate">
+
+        </div>
+        <div class="form-group">
+          <label for="leavingDate">Leaving Date:</label>
+          <input formControlName="leavingDate" type="date" class="form-control" id="leavingDate" [placeholder]="employee?.leavingDate">
+
+        </div>
+        <div class="form-group">
+          <label for="phoneNumber">Phone Number:</label>
+          <input formControlName="phoneNumber" type="text" class="form-control" id="phoneNumber" [placeholder]="employee?.phoneNumber">
+
+        </div>
+        <div class="form-group">
+          <label for="manager">Manager:</label>
+          <input formControlName="manager" type="text" class="form-control" id="manager" [placeholder]="employee?.manager">
+
+        </div>
+        <div formGroupName="department">
+          <div class="form-group">
+            <label for="department">Department:</label>
+            <select formControlName="deptId" type="text" class="form-control" id="deptId" >
+            <option *ngFor="let department of departments" [value]="department?.deptId">{{department.deptName}}</option>
+            </select>
+          </div>
+        </div>
+        <div formGroupName="client">
+          <div class="form-group">
+            <label for="client">Client:</label>
+            <select formControlName="cid" type="text" class="form-control" id="cid" >
+               <option *ngFor="let client of clients" [value]="client?.cid">{{client.name}}</option>
+              </select>
+          </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

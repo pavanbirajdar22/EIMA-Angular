@@ -38,7 +38,7 @@
 					<div *ngIf="permissions?.editDepartment">
 						<br/>
 						<ul class="list-inline">
-							<li><button class="btn btn-primary">Edit Department</button></li>
+							<li><button class="btn btn-primary" [routerLink]="['/edit-department',deptId]">Edit Department</button></li>
 						</ul>
 					</div>
 				</div>

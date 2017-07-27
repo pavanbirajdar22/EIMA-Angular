@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
-import { MdCardModule, MdButtonModule, MdPaginatorModule, MdDialogModule, MdSnackBarModule, MdRadioModule } from '@angular/material';
+import { MdCardModule, MdButtonModule, MdPaginatorModule, MdDialogModule, MdSnackBarModule, MdRadioModule,MdSlideToggleModule } from '@angular/material';
 import { RouterModule, ActivatedRouteSnapshot, Router, Resolve } from '@angular/router';
 import { UserService } from './services/user.service';
 import { ClientService } from './services/client.service';
@@ -41,6 +41,17 @@ import { HistoryService } from './history/history.service';
 import { EditPermissionByAdminComponent } from './custom-forms/edit-permission-by-admin/edit-permission-by-admin.component';
 import { EditPermissionByAdminService } from './custom-forms/edit-permission-by-admin/edit-permission-by-admin.service';
 import { PermissionResolverService } from './custom-forms/edit-permission-by-admin/permission-resolver.service';
+import { EditEmployeeComponent } from './custom-forms/edit-employee/edit-employee.component';
+import { EditemployeeresolverService } from './custom-forms/edit-employee/editemployeeresolver.service';
+import { EditEmployeeService } from './custom-forms/edit-employee/edit-employee.service';
+import { EditProjectComponent } from './custom-forms/edit-project/edit-project.component';
+import { EditProjectResolverService } from './custom-forms/edit-project/edit-project-resolver.service';
+import { EditProjectService } from './custom-forms/edit-project/edit-project.service';
+import { EditDepartmentComponent } from './custom-forms/edit-department/edit-department.component';
+import { EditDepartmentResolverService } from './custom-forms/edit-department/edit-department-resolver.service';
+import { EditDepartmentService } from './custom-forms/edit-department/edit-department.service';
+import { VisibilityFormComponent } from './custom-forms/visibility-form/visibility-form.component';
+import { VisibilityService } from './custom-forms/visibility-form/visibility.service';
 
 const routes = [
   {
@@ -126,6 +137,28 @@ const routes = [
         resolve:{"permission":PermissionResolverService}
       },
       {
+        path: 'edit-employee/:eid',
+        component: EditEmployeeComponent,
+        canActivate: [LoginAuthService],
+        resolve:{"employee":EditemployeeresolverService}
+      },
+      {
+        path: 'edit-department/:deptId',
+        component: EditDepartmentComponent,
+        canActivate: [LoginAuthService],
+        resolve:{"department":EditDepartmentResolverService}
+      },
+       {
+        path: 'edit-project/:pid',
+        component: EditProjectComponent,
+        canActivate: [LoginAuthService],
+      },
+       {
+        path: 'set-visibility',
+        component: VisibilityFormComponent,
+        canActivate: [LoginAuthService],
+      },
+      {
         path: 'search',
         component: ContainerComponent,
         canActivate: [LoginAuthService],
@@ -183,7 +216,11 @@ const routes = [
     CreateEmployeeFormComponent,
     CreateProjectFormComponent,
     HistoryComponent,
-    EditPermissionByAdminComponent
+    EditPermissionByAdminComponent,
+    EditEmployeeComponent,
+    EditProjectComponent,
+    EditDepartmentComponent,
+    VisibilityFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -197,6 +234,7 @@ const routes = [
     BrowserAnimationsModule,
     MdPaginatorModule,
     MdRadioModule,
+    MdSlideToggleModule
   ],
   providers: [
     UserService,
@@ -212,7 +250,14 @@ const routes = [
     CreateClientService,
     HistoryService,
     EditPermissionByAdminService,
-    PermissionResolverService
+    PermissionResolverService,
+    EditemployeeresolverService,
+    EditEmployeeService,
+    EditProjectService,
+    EditProjectResolverService,
+    EditDepartmentResolverService,
+    EditDepartmentService,
+    VisibilityService
   ],
   bootstrap: [AppComponent],
 })

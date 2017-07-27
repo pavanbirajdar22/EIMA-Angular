@@ -1,0 +1,29 @@
+<br/>
+<div class="row">
+  <div class="col-md-4 col-sm-4 col-xs-4">
+    <h4><a><b>Set Visibility</b></a></h4>
+  </div>
+</div>
+<hr/>
+<md-card>
+  <md-card-content>
+    <div class="row">
+      <div class="col-md-6">
+        <h5>DOB Visible :</h5>
+        <h5>Address Visible :</h5>
+        <h5>Gender Visible :</h5>
+        <h5>Phone number Visible :</h5>
+      </div>
+      <div class="col-md-6">
+        <form [formGroup]="visibility" (submit)="setVisibility()">
+        <md-slide-toggle formControlName="dobVisible"></md-slide-toggle><br/>
+        <md-slide-toggle formControlName="addressVisible" ></md-slide-toggle><br/>
+        <md-slide-toggle formControlName="genderVisible" ></md-slide-toggle><br/>
+        <md-slide-toggle formControlName="phoneVisible" ></md-slide-toggle><br/>
+        <br/>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+    </md-card-content>
+</md-card>

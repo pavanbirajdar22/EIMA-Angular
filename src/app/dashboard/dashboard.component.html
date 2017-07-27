@@ -48,8 +48,8 @@
         <h5><small>Last Login: </small>{{user?.lastLogin|date:"dd-MMM-yyyy, HH:mm"}}</h5>
         <br/>
         <ul class="list-inline">
-          <button *ngIf="permissions?.editEmployee" class="btn btn-primary">Edit Details</button>
-          <button class="btn btn-primary">Change Visibility</button>
+          <button *ngIf="permissions?.editEmployee" class="btn btn-primary" [routerLink]="['/edit-employee',user?.eid]">Edit Details</button>
+          <button class="btn btn-primary" routerLink="/set-visibility">Change Visibility</button>
         </ul>
       </div>
     </div>

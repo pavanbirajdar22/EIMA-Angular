@@ -46,7 +46,7 @@
 					<div *ngIf="permissions?.editProject">
 						<br/>
 						<ul class="list-inline">
-							<li><button class="btn btn-primary">Edit Project</button></li>
+							<li><button class="btn btn-primary" [routerLink]="['/edit-project',pid]">Edit Project</button></li>
 						</ul>
 					</div>
 				</div>

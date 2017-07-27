@@ -1,0 +1,23 @@
+<br/>
+<div class="row">
+  <div class="col-md-4 col-sm-4 col-xs-4">
+    <h4><a><b>Edit Department Name</b></a></h4>
+  </div>
+</div>
+<hr/>
+<div class="container">
+  <div class="col-md-7 col-sm-7 col-xs-7">
+    <div class="panel panel-primary">
+      <div class="panel-body">
+        <form [formGroup]="editDepartmentForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="deptName">Name:</label>
+            <input formControlName="deptName" type="text" class="form-control" id="deptName" placeholder="Enter Name">
+
+          </div>
+          <button [disabled]="!editDepartmentForm?.valid" class="btn btn-primary" type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
