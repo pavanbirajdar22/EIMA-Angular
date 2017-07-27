@@ -21,7 +21,7 @@ export class CreateDepartmentFormComponent implements OnInit {
 
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {
-      duration: 2000,
+      duration: 4000,
     });
   }
 
@@ -30,7 +30,7 @@ export class CreateDepartmentFormComponent implements OnInit {
     this.service.createDepartment(this.departmentForm.value).subscribe(ele => {
 
       if (ele.status === 201) {
-        this.openSnackBar("      Added Successfully", "")
+        this.openSnackBar("Department","Added Successfully")
       }
     });
 

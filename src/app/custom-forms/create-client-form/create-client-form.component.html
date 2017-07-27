@@ -20,7 +20,7 @@
           <input formControlName="location" type="text" class="form-control" id="location" placeholder="Enter Location">
           <p *ngIf="clientForm.get('location').touched && clientForm.get('location').hasError('required')" style="color:tomato">This field is required!</p>
         </div>
-        <button class="btn btn-primary" type="submit">Submit</button>
+        <button [disabled]="!clientForm.valid" class="btn btn-primary" type="submit">Submit</button>
       </form>
     </div>
   </div>

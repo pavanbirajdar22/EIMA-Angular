@@ -21,12 +21,12 @@
           <small>Department: </small> {{department?.deptName}}
         </h5>
         <h5 style="word-wrap: break-word">
-          <small>Gender: </small> {{gender[+employee?.gender]}} &nbsp;<span title="Visible to others" *ngIf="user?.genderVisible"
-            class="glyphicon glyphicon-eye-open"></span>
+          <small>Gender: </small> {{gender[+employee?.gender]}} &nbsp;&nbsp;<span title="Not Visible to others" *ngIf="!user?.genderVisible"
+            class="glyphicon glyphicon-eye-close"></span>
         </h5>
         <h5 style="word-wrap: break-word">
-          <small>DOB: </small> {{employee?.dob | date:"dd-MMM-yyyy"}}&nbsp;<span title="Visible to others" *ngIf="user?.dobVisible"
-            class="glyphicon glyphicon-eye-open"></span>
+          <small>DOB: </small> {{employee?.dob | date:"dd-MMM-yyyy"}}&nbsp;&nbsp;<span title="Not Visible to others" *ngIf="!user?.dobVisible"
+            class="glyphicon glyphicon-eye-close"></span>
         </h5>
         <h5 style="word-wrap: break-word">
           <small>Joined on: </small> {{employee?.joiningDate | date:"dd-MMM-yyyy"}}
@@ -40,10 +40,12 @@
         <h5 style="word-wrap: break-word" *ngIf="employee?.addresses[0]">
           <small>Address: </small>
           <p>{{employee?.addresses[0].line1}}, {{employee?.addresses[0].line2}}, {{employee?.addresses[0].city}}-{{employee?.addresses[0].pincode}},
-            {{employee?.addresses[0].state}}, {{employee?.addresses[0].country}} &nbsp;
-            <span title="Visible to others" *ngIf="user?.addressVisible" class="glyphicon glyphicon-eye-open"></span>
+            {{employee?.addresses[0].state}}, {{employee?.addresses[0].country}} &nbsp;&nbsp;
+            <span title="Not Visible to others" *ngIf="!user?.addressVisible" class="glyphicon glyphicon-eye-close"></span>
           </p>
         </h5>
+        <br/>
+        <h5><small>Last Login: </small>{{user?.lastLogin|date:"dd-MMM-yyyy, HH:mm"}}</h5>
         <br/>
         <ul class="list-inline">
           <button *ngIf="permissions?.editEmployee" class="btn btn-primary">Edit Details</button>

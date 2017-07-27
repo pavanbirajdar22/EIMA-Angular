@@ -67,6 +67,9 @@ export class HomeComponent implements OnInit {
   }
 
   logout() {
+    this.userService.updateLastLogin().subscribe(ele=>{
+      
+    })
     sessionStorage.clear()
     this.router.navigate(['\login'])
   }

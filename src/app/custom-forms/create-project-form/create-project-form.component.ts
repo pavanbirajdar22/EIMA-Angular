@@ -17,7 +17,7 @@ export class CreateProjectFormComponent implements OnInit {
 
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {
-      duration: 2000,
+      duration: 4000
     });
   }
 
@@ -25,7 +25,7 @@ export class CreateProjectFormComponent implements OnInit {
     this.projectForm=this.fb.group({
       title:['',Validators.required],
       startDate:['',Validators.required],
-      endDate:['',Validators.required], 
+      endDate:[''], 
       client:this.fb.group({
        cid:['',Validators.required],
       }),

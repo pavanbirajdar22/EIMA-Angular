@@ -122,8 +122,8 @@ export class ReportComponent implements OnInit {
     });
   }
 
-/*   generateReport() {
+   generateReport() {
 
   }
- */
+ 
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CreateEmployeeService } from './create-employee.service';
 import { MdSnackBar } from "@angular/material"
-import { Validators, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Validators, FormBuilder, FormControl, FormGroup, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-create-employee-form',
@@ -17,7 +17,7 @@ export class CreateEmployeeFormComponent implements OnInit {
 
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {
-      duration: 2000,
+      duration: 4000
     });
   }
 
@@ -29,19 +29,20 @@ export class CreateEmployeeFormComponent implements OnInit {
       lastName: ['', [Validators.required]],
       dob:['',Validators.required],
       gender:[,Validators.required],
-      address: this.fb.group({
+      addresses: this.fb.array([
+        this.fb.group({
         city: ['', Validators.required],
         country: ['', Validators.required],
         line1: ['', Validators.required],
-        line2: ['', Validators.required],
+        line2: [''],
         pincode: ['', Validators.required],
         state: ['', Validators.required]
-      }, null),
+      })]),
       salary: ['', Validators.required],
       joiningDate: ['', Validators.required],
-      leavingDate: ['', Validators.required],
+      leavingDate: [''],
       designation: ['', Validators.required],
-      manager: ['', Validators.required],
+      manager: ['',Validators.required],
       phoneNumber: ['', Validators.required],
       department:this.fb.group({
         deptId:['',Validators.required]
@@ -64,12 +65,14 @@ export class CreateEmployeeFormComponent implements OnInit {
   }
 
   onSubmit() {
+
+    console.log(this.employeeForm.value)
     this.service.createEmployee(this.employeeForm.value).subscribe(ele => {
 
       if (ele.status === 201) {
-        this.openSnackBar("Added Successfully", "Employee")
+        this.openSnackBar("Employee","Added Successfully")
       }
     });
-  }
+   }
 
 }

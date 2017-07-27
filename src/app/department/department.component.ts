@@ -17,6 +17,7 @@ export class DepartmentComponent implements OnInit {
   department: Department;
   projects: Project[] = new Array();
   employees: any = new Array();
+  permissions:any;
 
   constructor(private departmentService: DepartmentService, private activatedRoute: ActivatedRoute) {}
 
@@ -27,6 +28,10 @@ export class DepartmentComponent implements OnInit {
       this.departmentService.getProjectsById(this.deptId).subscribe(projects => this.projects = projects._embedded.projects);
       this.departmentService.getEmployeesById(this.deptId).subscribe(employees => this.employees = employees._embedded.employees);
     });
+
+    let user=JSON.parse(sessionStorage.getItem('currentUser'))
+    this.permissions=user.permission
+    console.log(this.permissions)
 
   }
 

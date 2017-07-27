@@ -36,6 +36,8 @@ import { CreateEmployeeService } from './custom-forms/create-employee-form/creat
 import { CreateProjectService } from './custom-forms/create-project-form/create-project.service';
 import { CreateDepartmentService } from './custom-forms/create-department-form/create-department.service';
 import { CreateClientService } from './custom-forms/create-client-form/create-client.service';
+import { HistoryComponent } from './history/history.component';
+import { HistoryService } from './history/history.service';
 
 const routes = [
   {
@@ -50,6 +52,11 @@ const routes = [
       {
         path: 'dashboard',
         component: DashboardComponent,
+        canActivate: [LoginAuthService],
+      },
+      {
+        path: 'history',
+        component: HistoryComponent,
         canActivate: [LoginAuthService],
       },
       {
@@ -165,7 +172,8 @@ const routes = [
     CreateClientFormComponent,
     CreateDepartmentFormComponent,
     CreateEmployeeFormComponent,
-    CreateProjectFormComponent
+    CreateProjectFormComponent,
+    HistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -190,7 +198,8 @@ const routes = [
     CreateEmployeeService,
     CreateProjectService,
     CreateDepartmentService,
-    CreateClientService
+    CreateClientService,
+    HistoryService
   ],
   bootstrap: [AppComponent],
 })

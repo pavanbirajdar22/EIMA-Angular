@@ -17,6 +17,7 @@ export class ProjectComponent implements OnInit {
   client: Client = null;
   team: any = new Array();
   department: Department = null;
+  permissions:any
 
   constructor(private projectService: ProjectService, private activatedRoute: ActivatedRoute) { }
 
@@ -28,6 +29,9 @@ export class ProjectComponent implements OnInit {
       this.projectService.getTeamByPid(this.pid).subscribe(team => this.team = team._embedded.employees);
       this.projectService.getDepartmentByPid(this.pid).subscribe(department => this.department = department);
     });
+
+    let user=JSON.parse(sessionStorage.getItem('currentUser'))
+    this.permissions=user.permission
   }
 
 }

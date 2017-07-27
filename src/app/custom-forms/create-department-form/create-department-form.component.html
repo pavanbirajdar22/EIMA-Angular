@@ -15,7 +15,7 @@
           <input formControlName="deptName" type="text" class="form-control" id="deptName" placeholder="Enter Name">
           <p *ngIf="departmentForm.get('deptName').touched && departmentForm.get('deptName').hasError('required')" style="color:tomato">This field is required!</p>
         </div>
-        <button class="btn btn-primary" type="submit">Submit</button>
+        <button [disabled]="!departmentForm.valid" class="btn btn-primary" type="submit">Submit</button>
       </form>
     </div>
   </div>

@@ -17,6 +17,7 @@ export class ClientComponent implements OnInit {
   client: Client;
   projects: Project[] = new Array();
   employees: any = new Array();
+  permissions:any;
 
   constructor(private clientService: ClientService, private activatedRoute: ActivatedRoute) { }
 
@@ -27,6 +28,9 @@ export class ClientComponent implements OnInit {
       this.clientService.getProjectsByCid(this.cid).subscribe(projects => this.projects = projects._embedded.projects);
       this.clientService.getEmployeesByCid(this.cid).subscribe(employees => this.employees = employees._embedded.employees);
     });
+
+    let user=JSON.parse(sessionStorage.getItem('currentUser'))
+    this.permissions=user.permission
 
   }
 

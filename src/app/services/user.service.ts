@@ -55,4 +55,10 @@ export class UserService {
     return this.http.get(apiUrl);
   }
 
+  updateLastLogin(){
+    let user=JSON.parse(sessionStorage.getItem('currentUser'))
+    user.lastLogin=new Date()
+    return this.http.patch('http://localhost:8080/users/'+user.eid,user)
+  }
+
 }

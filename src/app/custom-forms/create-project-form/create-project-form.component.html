@@ -41,7 +41,7 @@
           </select>
             </div>
           </div>
-          <button class="btn btn-primary" type="submit">Submit</button>
+          <button [disabled]="!projectForm.valid" class="btn btn-primary" type="submit">Submit</button>
         </form>
       </div>
     </div>

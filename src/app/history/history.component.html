@@ -1,0 +1,23 @@
+<br/>
+<div class="row">
+  <div class="col-md-4 col-sm-4 col-xs-4">
+    <h4><a><b>View History</b></a></h4>
+  </div>
+</div>
+<hr/>
+<div class="container">
+  <div *ngIf="histories?.length==0" class="col-md-5 col-sd-6 col-xs-5">
+    <md-card>
+      <md-card-header>
+        <h3>No History Available!</h3>
+      </md-card-header>
+    </md-card>
+  </div>
+  <div *ngFor="let history of (histories) ">
+    <md-card>
+
+      <p style="color:black"> Your <b>{{history.fieldChanged | titlecase | uppercase}}</b> was changed from <b>{{history.oldVal | uppercase}}</b>        to <b>{{history.newVal | uppercase}}</b> on {{history.timestamp | date}} </p>
+
+    </md-card>
+  </div>
+</div>

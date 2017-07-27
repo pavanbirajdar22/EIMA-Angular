@@ -57,10 +57,15 @@
 						</ul>
 					</div>
 					<br/>
-					<button *ngIf="permissions?.editOtherEmployee" class="btn btn-primary">Edit Permissions</button>
 				</div>
 				<div class="col-md-3 col-xs-3"></div>
 			</div>
-		</md-card-content> 
+			<div>
+			<ul class="list-inline" *ngIf="permissions?.editOtherEmployee" style="width:80%;margin:auto">
+				<li><button class="btn btn-primary">Edit Permissions</button></li>
+				<li><button class="btn btn-primary">Edit Employee</button></li>
+			</ul>
+			</div>
+		</md-card-content>
 	</md-card>
 </div>
