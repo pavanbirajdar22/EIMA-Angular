@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { MdCard } from '@angular/material'
+import { MdCard} from '@angular/material'
 import { Project } from '../classes/project';
 import { Client } from '../classes/client';
 import { ProjectService } from '../services/project.service';
 import { ClientService } from '../services/client.service';
 import { UserService } from '../services/user.service';
 import { Department } from '../classes/department';
+import { EditPermissionByAdminComponent } from '../custom-forms/edit-permission-by-admin/edit-permission-by-admin.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -44,5 +45,4 @@ export class DashboardComponent implements OnInit {
     let date:Date=new Date()
     this.year=+date.getFullYear() 
   }
-
 }

@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
-import { MdCardModule, MdButtonModule, MdPaginatorModule, MdDialogModule, MdSnackBarModule } from '@angular/material';
-import { RouterModule, ActivatedRouteSnapshot, Router } from '@angular/router'
+import { MdCardModule, MdButtonModule, MdPaginatorModule, MdDialogModule, MdSnackBarModule, MdRadioModule } from '@angular/material';
+import { RouterModule, ActivatedRouteSnapshot, Router, Resolve } from '@angular/router';
 import { UserService } from './services/user.service';
 import { ClientService } from './services/client.service';
 import { DepartmentService } from './services/department.service';
@@ -38,6 +38,9 @@ import { CreateDepartmentService } from './custom-forms/create-department-form/c
 import { CreateClientService } from './custom-forms/create-client-form/create-client.service';
 import { HistoryComponent } from './history/history.component';
 import { HistoryService } from './history/history.service';
+import { EditPermissionByAdminComponent } from './custom-forms/edit-permission-by-admin/edit-permission-by-admin.component';
+import { EditPermissionByAdminService } from './custom-forms/edit-permission-by-admin/edit-permission-by-admin.service';
+import { PermissionResolverService } from './custom-forms/edit-permission-by-admin/permission-resolver.service';
 
 const routes = [
   {
@@ -117,6 +120,12 @@ const routes = [
         canActivate: [LoginAuthService],
       },
       {
+        path: 'edit-permission/:eid',
+        component: EditPermissionByAdminComponent,
+        canActivate: [LoginAuthService],
+        resolve:{"permission":PermissionResolverService}
+      },
+      {
         path: 'search',
         component: ContainerComponent,
         canActivate: [LoginAuthService],
@@ -173,7 +182,8 @@ const routes = [
     CreateDepartmentFormComponent,
     CreateEmployeeFormComponent,
     CreateProjectFormComponent,
-    HistoryComponent
+    HistoryComponent,
+    EditPermissionByAdminComponent
   ],
   imports: [
     BrowserModule,
@@ -186,6 +196,7 @@ const routes = [
     MdSnackBarModule,
     BrowserAnimationsModule,
     MdPaginatorModule,
+    MdRadioModule,
   ],
   providers: [
     UserService,
@@ -199,7 +210,9 @@ const routes = [
     CreateProjectService,
     CreateDepartmentService,
     CreateClientService,
-    HistoryService
+    HistoryService,
+    EditPermissionByAdminService,
+    PermissionResolverService
   ],
   bootstrap: [AppComponent],
 })

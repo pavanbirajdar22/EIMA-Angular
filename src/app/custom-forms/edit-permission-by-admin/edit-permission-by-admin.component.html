@@ -1,0 +1,108 @@
+<br/>
+<div class="row">
+	<div class="col-md-4 col-sm-4 col-xs-4">
+		<h4><a><b>Edit Permissions For User Id {{ eid }}</b></a></h4>
+	</div>
+</div>
+<hr/>  
+<md-card>
+    <md-card-content>
+      <form [formGroup]="permissionsForm" (ngSubmit)="onSubmit()">
+        <table class="table">
+          <tbody>
+            <tr>
+              <td><b>Add Project</b></td>
+              <td>
+                <md-radio-group formControlName="addEmployee" value=0>
+                  <md-radio-button [value]=1 > Grant </md-radio-button>
+                  <md-radio-button [value]=0 style="margin-left:10px"> Revoke </md-radio-button>
+                </md-radio-group>
+              </td>
+            </tr>
+            <tr>
+              <td><b>Add Project</b></td>
+              <td>
+                <md-radio-group formControlName="addProject">
+                  <md-radio-button [value]=1> Grant </md-radio-button>
+                  <md-radio-button [value]=0 style="margin-left:10px"> Revoke </md-radio-button>
+                </md-radio-group>
+              </td>
+            </tr>
+            <tr>
+              <td><b>Add Client</b></td>
+              <td>
+                <md-radio-group formControlName="addClient">
+                  <md-radio-button [value]=1> Grant </md-radio-button>
+                  <md-radio-button [value]=0 style="margin-left:10px"> Revoke </md-radio-button>
+                </md-radio-group>
+              </td>
+            </tr>
+            <tr>
+              <td><b>Add Department</b></td>
+              <td>
+                <md-radio-group formControlName="addDepartment">
+                  <md-radio-button [value]=1> Grant </md-radio-button>
+                  <md-radio-button [value]=0 style="margin-left:10px"> Revoke </md-radio-button>
+                </md-radio-group>
+              </td>
+            </tr>
+            <tr>
+              <td><b>Edit Employee</b></td>
+              <td>
+                <md-radio-group formControlName="editEmployee">
+                  <md-radio-button [value]=1> Grant </md-radio-button>
+                  <md-radio-button [value]=0 style="margin-left:10px"> Revoke </md-radio-button>
+                </md-radio-group>
+              </td>
+            </tr>
+            <tr>
+              <td><b>Edit Department</b></td>
+              <td>
+                <md-radio-group formControlName="editDepartment">
+                  <md-radio-button [value]=1> Grant </md-radio-button>
+                  <md-radio-button [value]=0 style="margin-left:10px"> Revoke </md-radio-button>
+                </md-radio-group>
+              </td>
+            </tr>
+            <tr>
+              <td><b>Edit Client</b></td>
+              <td>
+                <md-radio-group formControlName="editClient">
+                  <md-radio-button [value]=1> Grant </md-radio-button>
+                  <md-radio-button [value]=0 style="margin-left:10px"> Revoke </md-radio-button>
+                </md-radio-group>
+              </td>
+            </tr>
+            <tr>
+              <td><b>Edit Other Employee</b></td>
+              <td>
+                <md-radio-group formControlName="editOtherEmployee">
+                  <md-radio-button [value]=1> Grant </md-radio-button>
+                  <md-radio-button [value]=0 style="margin-left:10px"> Revoke </md-radio-button>
+                </md-radio-group>
+              </td>
+            </tr>
+            <tr>
+              <td><b>Edit Project</b></td>
+              <td>
+                <md-radio-group formControlName="editProject">
+                  <md-radio-button [value]=1> Grant </md-radio-button>
+                  <md-radio-button [value]=0 style="margin-left:10px"> Revoke </md-radio-button>
+                </md-radio-group>
+              </td>
+            </tr>
+            <tr>
+              <td><b>Delete User</b></td>
+              <td>
+                <md-radio-group formControlName="deleteUser">
+                  <md-radio-button [value]=1> Grant </md-radio-button>
+                  <md-radio-button [value]=0 style="margin-left:10px"> Revoke </md-radio-button>
+                </md-radio-group>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <button class="btn btn-primary">SUBMIT</button>
+      </form>
+    </md-card-content>
+  </md-card>

@@ -2,11 +2,14 @@ import {UserService} from '../services/user.service';
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, ActivatedRouteSnapshot} from '@angular/router';
 import 'rxjs/add/operator/map'
+import { MdDialog } from '@angular/material';
+import { LoginComponent } from '../login/login.component';
+import { CreateClientFormComponent } from '../custom-forms/create-client-form/create-client-form.component';
 
 @Component({
   selector: 'app-employee',
   templateUrl: './employee.component.html',
-  styleUrls: ['./employee.component.css']
+  styleUrls: ['./employee.component.css'],
 })
 export class EmployeeComponent implements OnInit {
 
@@ -19,7 +22,7 @@ export class EmployeeComponent implements OnInit {
   gender = ['Male', 'Female'];
   clients: any = new Array();
 
-  constructor(private userService: UserService, private ar: ActivatedRoute) {}
+  constructor(private userService: UserService, private ar: ActivatedRoute,private dialog: MdDialog) {}
 
   ngOnInit() {
     this.ar.params.subscribe(params => {
@@ -33,6 +36,10 @@ export class EmployeeComponent implements OnInit {
     });
     let user=JSON.parse(sessionStorage.getItem('currentUser'))
     this.permissions=user.permission
+  }
+
+  editPermissions(){
+    //this.dialog.open();
   }
 
 }

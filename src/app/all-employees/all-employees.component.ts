@@ -16,7 +16,7 @@ export class AllEmployeesComponent implements OnInit {
   totalEmployeeCount = 0;
   permissions:any;
 
-  constructor(private employeeService: UserService, private router: Router,private dialog: MdDialog) {}
+  constructor(private employeeService: UserService, private router: Router) {}
 
   ngOnInit() {
     let user=JSON.parse(sessionStorage.getItem("currentUser"));
@@ -36,10 +36,4 @@ export class AllEmployeesComponent implements OnInit {
   onPageChange(event) {
     this.employeeService.getAllEmployees(event.pageIndex).subscribe(employee => this.employees = employee.json()._embedded.employees);
   }
-
-  addEmployee(){
-    this.dialog.open(CreateEmployeeFormComponent);
-  }
-
-
 }

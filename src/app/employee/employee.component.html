@@ -62,7 +62,7 @@
 			</div>
 			<div>
 			<ul class="list-inline" *ngIf="permissions?.editOtherEmployee" style="width:80%;margin:auto">
-				<li><button class="btn btn-primary">Edit Permissions</button></li>
+				<li><button class="btn btn-primary" [routerLink]="['/edit-permission',employeeId]">Edit Permissions</button></li>
 				<li><button class="btn btn-primary">Edit Employee</button></li>
 			</ul>
 			</div>
