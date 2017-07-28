@@ -61,4 +61,12 @@ export class UserService {
     return this.http.patch('http://localhost:8080/users/'+user.eid,user)
   }
 
+  getUserByEid(eid:number){
+    const apiUrl = 'http://localhost:8080/users/'+eid;
+    return this.http.get(apiUrl).map(resp => resp.json());
+  }
+  editVisibilityByEid(user:any){
+      return this.http.patch("http://localhost:8080/users/"+user.eid,user).map(resp => resp.json())
+  }
+
 }

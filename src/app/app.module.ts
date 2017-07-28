@@ -51,7 +51,10 @@ import { EditDepartmentComponent } from './custom-forms/edit-department/edit-dep
 import { EditDepartmentResolverService } from './custom-forms/edit-department/edit-department-resolver.service';
 import { EditDepartmentService } from './custom-forms/edit-department/edit-department.service';
 import { VisibilityFormComponent } from './custom-forms/visibility-form/visibility-form.component';
-import { VisibilityService } from './custom-forms/visibility-form/visibility.service';
+import { VisibilityResolverService } from './custom-forms/visibility-form/visibility-resolver.service';
+import { EditClientComponent } from './custom-forms/edit-client/edit-client.component';
+import { EditClientResolverService } from './custom-forms/edit-client/edit-client-resolver.service';
+import { EditClientService } from './custom-forms/edit-client/edit-client.service';
 
 const routes = [
   {
@@ -148,6 +151,12 @@ const routes = [
         canActivate: [LoginAuthService],
         resolve:{"department":EditDepartmentResolverService}
       },
+      {
+        path: 'edit-client/:cid',
+        component: EditClientComponent,
+        canActivate: [LoginAuthService],
+        resolve:{"client":EditClientResolverService}
+      },
        {
         path: 'edit-project/:pid',
         component: EditProjectComponent,
@@ -157,6 +166,7 @@ const routes = [
         path: 'set-visibility',
         component: VisibilityFormComponent,
         canActivate: [LoginAuthService],
+        resolve:{"user":VisibilityResolverService}
       },
       {
         path: 'search',
@@ -219,6 +229,7 @@ const routes = [
     EditPermissionByAdminComponent,
     EditEmployeeComponent,
     EditProjectComponent,
+    EditClientComponent,
     EditDepartmentComponent,
     VisibilityFormComponent,
   ],
@@ -257,7 +268,9 @@ const routes = [
     EditProjectResolverService,
     EditDepartmentResolverService,
     EditDepartmentService,
-    VisibilityService
+    VisibilityResolverService,
+    EditClientResolverService,
+    EditClientService
   ],
   bootstrap: [AppComponent],
 })

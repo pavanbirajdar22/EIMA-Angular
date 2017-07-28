@@ -35,7 +35,8 @@
           <small>Left on: </small> {{employee?.leavingDate | date:"dd-MMM-yyyy"}}
         </h5>
         <h5 style="word-wrap: break-word">
-          <small>Phone: </small> {{employee?.phoneNumber}}
+          <small>Phone: </small> {{employee?.phoneNumber}}&nbsp;&nbsp;<span title="Not Visible to others" *ngIf="!user?.phoneVisible"
+            class="glyphicon glyphicon-eye-close"></span>
         </h5>
         <h5 style="word-wrap: break-word" *ngIf="employee?.addresses[0]">
           <small>Address: </small>

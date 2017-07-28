@@ -27,7 +27,7 @@
 					<h5 style="word-wrap: break-word" *ngIf="employee?.leavingDate">
 						<small>Left on: </small> {{employee?.leavingDate | date:"dd-MMM-yyyy"}}
 					</h5>
-					<h5 style="word-wrap: break-word">
+					<h5 style="word-wrap: break-word" *ngIf="user && user['phoneVisible']===1">
 						<small>Phone: </small> {{employee?.phoneNumber}}
 					</h5>
 					<h5 style="word-wrap: break-word" *ngIf="employee?.addresses[0] && user && user['addressVisible']==1">

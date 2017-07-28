@@ -1,29 +1,54 @@
 <br/>
 <div class="row">
   <div class="col-md-4 col-sm-4 col-xs-4">
-    <h4><a><b>Set Visibility</b></a></h4>
+    <h4><a><b>Edit Visibility For User Id {{ eid }}</b></a></h4>
   </div>
 </div>
 <hr/>
 <md-card>
   <md-card-content>
-    <div class="row">
-      <div class="col-md-6">
-        <h5>DOB Visible :</h5>
-        <h5>Address Visible :</h5>
-        <h5>Gender Visible :</h5>
-        <h5>Phone number Visible :</h5>
-      </div>
-      <div class="col-md-6">
-        <form [formGroup]="visibility" (submit)="setVisibility()">
-        <md-slide-toggle formControlName="dobVisible"></md-slide-toggle><br/>
-        <md-slide-toggle formControlName="addressVisible" ></md-slide-toggle><br/>
-        <md-slide-toggle formControlName="genderVisible" ></md-slide-toggle><br/>
-        <!-- <md-slide-toggle formControlName="phoneVisible" ></md-slide-toggle><br/> -->
-        <br/>
-        <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-      </div>
-    </div>
-    </md-card-content>
+    <form [formGroup]="visibilityForm" (ngSubmit)="onSubmit()">
+      <table class="table">
+        <tbody>
+          <tr>
+            <td><b>Address</b></td>
+            <td>
+              <md-radio-group formControlName="addressVisible">
+                <md-radio-button [value]=1> Visible </md-radio-button>
+                <md-radio-button [value]=0 style="margin-left:10px"> Not Visible </md-radio-button>
+              </md-radio-group>
+            </td>
+          </tr>
+          <tr>
+            <td><b>Phone No</b></td>
+            <td>
+              <md-radio-group formControlName="phoneVisible">
+                <md-radio-button [value]=1> Visible </md-radio-button>
+                <md-radio-button [value]=0 style="margin-left:10px"> Not Visible </md-radio-button>
+              </md-radio-group>
+            </td>
+          </tr>
+          <tr>
+            <td><b>DOB</b></td>
+            <td>
+              <md-radio-group formControlName="dobVisible">
+                <md-radio-button [value]=1> Visible </md-radio-button>
+                <md-radio-button [value]=0 style="margin-left:10px"> Not Visible </md-radio-button>
+              </md-radio-group>
+            </td>
+          </tr>
+          <tr>
+            <td><b>Gender</b></td>
+            <td>
+              <md-radio-group formControlName="genderVisible">
+                <md-radio-button [value]=1> Visible </md-radio-button>
+                <md-radio-button [value]=0 style="margin-left:10px"> Not Visible </md-radio-button>
+              </md-radio-group>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="btn btn-primary">SUBMIT</button>
+    </form>
+  </md-card-content>
 </md-card>

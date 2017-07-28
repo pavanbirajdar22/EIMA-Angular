@@ -21,9 +21,6 @@ export class PermissionResolverService implements Resolve<Permission> {
      
       this.eid=+route.params['eid']
       return this.userService.getPermissionsById(this.eid)
-    
-
-  
     // return this.editEmployeeService.getPermissions();
   }
 

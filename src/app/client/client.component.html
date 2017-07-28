@@ -36,7 +36,7 @@
 					<div *ngIf="permissions?.editClient">
 						<br/>
 						<ul class="list-inline">
-							<li><button class="btn btn-primary">Edit Client</button></li>
+							<li><button class="btn btn-primary" [routerLink]="['/edit-client/',cid]">Edit Client</button></li>
 						</ul>
 					</div>
 				</div>
