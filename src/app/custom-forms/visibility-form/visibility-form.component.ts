@@ -21,19 +21,18 @@ export class VisibilityFormComponent implements OnInit {
       dobVisible:[this.user.dobVisible],
       addressVisible:[this.user.addressVisible],
       genderVisible:[this.user.genderVisible],
-      phoneVisible:[this.user.phoneVisible]
+      //phoneVisible:[this.user.phoneVisible]
     })
   }
 
   setVisibility(){
     this.visibility.value.eid=this.user.eid
-    this.visibility.value.emailId=this.user.emailId
     this.visibility.value.addressVisible= this.visibility.value.addressVisible ? 1 :0
     this.visibility.value.dobVisible= this.visibility.value.dob ? 1 :0
     this.visibility.value.genderVisible= this.visibility.value.genderVisible ? 1 :0
-    this.visibility.value.phoneVisible= this.visibility.value.phoneVisible ? 1 :0
+    //this.visibility.value.phoneVisible= this.visibility.value.phoneVisible ? 1 :0
     console.log(this.visibility.value)
-    this.visiblityService.setVisibility(this.visibility.value).subscribe(ele=>{});
+    this.visiblityService.setVisibility(this.user.eid,this.visibility.value).subscribe(ele=>{});
   }
 
 }

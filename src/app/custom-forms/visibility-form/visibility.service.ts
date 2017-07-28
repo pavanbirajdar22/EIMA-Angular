@@ -6,7 +6,8 @@ export class VisibilityService {
 
   constructor(private http:Http) { }
 
-  setVisibility(visibility){
-    return this.http.patch("http://localhost:8080/users/"+visibility.eid,visibility)
+  setVisibility(id,visibility){
+    console.log(visibility)
+    return this.http.put("http://localhost:8080/users/"+id,visibility)
   }
 }
