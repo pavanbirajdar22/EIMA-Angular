@@ -10,6 +10,7 @@ import { Department } from '../classes/department';
 import { DepartmentService } from '../services/department.service';
 import { UserService } from '../services/user.service';
 import { User } from '../classes/user';
+declare var jsPDF: any;
 
 @Component({
   selector: 'app-report',
@@ -122,8 +123,13 @@ export class ReportComponent implements OnInit {
     });
   }
 
-   generateReport() {
-
+  generateReport(val: number) {
+    var doc = new jsPDF();
+    doc.text("Report", 14, 16);
+    var elem = document.getElementById("myTable");
+    var res = doc.autoTableHtmlToJson(elem);
+    doc.autoTable(res.columns, res.data, { startY: 20 });
+    doc.save('Report.pdf');
   }
  
 }

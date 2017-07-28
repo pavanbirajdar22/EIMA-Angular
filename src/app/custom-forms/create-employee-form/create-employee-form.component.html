@@ -139,7 +139,7 @@
           </select>
         </div>
 
-        <button class="btn btn-primary" type="submit">Submit</button>
+        <button [disabled]="!employeeForm.valid" class="btn btn-primary" type="submit">Submit</button>
       </form>
     </div>
   </div>

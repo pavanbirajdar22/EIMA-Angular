@@ -45,7 +45,7 @@
       <p></p>
       <br/>
       <div *ngIf="showTableFlag">
-        <table class="table table-bordered table-condensed table-hover table-responsive ">
+        <table id="myTable" class="table table-bordered table-condensed table-hover table-responsive ">
           <thead class="bg-primary ">
             <tr>
               <th>Eid</th>
@@ -75,7 +75,7 @@
 
           </tbody>
         </table>
-        <button class="btn btn-primary" (click)="generateReport()">PDF</button>
+        <button class="btn btn-primary" (click)="generateReport(1)">PDF</button>
       </div>
     </div>
   </md-card>

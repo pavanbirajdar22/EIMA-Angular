@@ -41,7 +41,7 @@ export class CreateEmployeeFormComponent implements OnInit {
       }),
       salary: ['', Validators.required],
       joiningDate: ['', Validators.required],
-      leavingDate: ['', Validators.required],
+      leavingDate: [''],
       designation: ['', Validators.required],
       manager: [, Validators.required],
       phoneNumber: ['', Validators.required],

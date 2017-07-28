@@ -91,7 +91,7 @@
         </div>
         <div class="form-group">
           <label for="manager">Manager:</label>
-          <input formControlName="manager" type="text" class="form-control" id="manager" [placeholder]="employee?.manager">
+          <input formControlName="manager" type="text" class="form-control" id="manager" [placeholder]="employee?._links.manager.href.split('/')[4]">
 
         </div>
         <div formGroupName="department">
