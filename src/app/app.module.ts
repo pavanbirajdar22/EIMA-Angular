@@ -161,6 +161,9 @@ const routes = [
         path: 'edit-project/:pid',
         component: EditProjectComponent,
         canActivate: [LoginAuthService],
+        resolve:{
+          'project':EditProjectResolverService
+        }
       },
        {
         path: 'set-visibility',

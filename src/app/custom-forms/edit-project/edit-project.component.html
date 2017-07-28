@@ -1,7 +1,7 @@
 <br/>
 <div class="row">
   <div class="col-md-4 col-sm-4 col-xs-4">
-    <h4><a><b>Add New Project</b></a></h4>
+    <h4><a><b>Edit Project</b></a></h4>
   </div>
 </div>
 <hr/>
@@ -25,23 +25,23 @@
             <input formControlName="endDate" type="date" class="form-control" id="endDate" placeholder="Enter End Date">
             
           </div>
-          <div formGroupName="client">
+           <div style="display:none" formGroupName="client">
             <div class="form-group">
-              <label for="client">Client:</label>
-              <select formControlName="cid" type="text" class="form-control" id="cid" placeholder="Enter Client">
+              <label style="visibility:hidden" for="client">Client:</label>
+              <select style="visibility:hidden" formControlName="cid" type="text" class="form-control" id="cid" placeholder="Enter Client">
             <option *ngFor="let client of clients" [value]="client.cid">{{client.name}}</option>
           </select>
             </div>
-          </div>
-          <div formGroupName="department">
+          </div> 
+          <div style="display:none" formGroupName="department">
             <div class="form-group">
-              <label for="department">Department:</label>
-              <select formControlName="deptId" type="text" class="form-control" id="deptId" placeholder="Enter Department">
+              <label style="visibility:gone" for="department">Department:</label>
+              <select style="visibility:gone" formControlName="deptId" type="text" class="form-control" id="deptId" placeholder="Enter Department">
             <option *ngFor="let department of departments" [value]="department.deptId">{{department.deptName}}</option>
           </select>
             </div>
-          </div>
-          <button [disabled]="!projectForm.valid" class="btn btn-primary" type="submit">Submit</button>
+          </div> 
+          <button [disabled]="!editProjectForm.valid" class="btn btn-primary" type="submit">Submit</button>
         </form>
       </div>
     </div>

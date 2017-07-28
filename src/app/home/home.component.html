@@ -67,7 +67,7 @@
 					<li><a routerLink="/projects">Projects</a></li>
 					<li><a routerLink="/clients">Clients</a></li>
 					<li><a routerLink="/departments">Departments</a></li>
-					<li><a routerLink="/reports">Reports</a></li>
+					<li><a routerLink="/reports" *ngIf="user?.permission?.generateReport">Reports</a></li>
 					<li><a routerLink="/history">View History</a></li>
 				</ul>
 			</div>
