@@ -1,128 +1,146 @@
 <br/>
 <div class="row">
   <div class="col-md-4 col-sm-4 col-xs-4">
-    <h4><a><b>Add New Employee</b></a></h4>
+    <h4><a><b>Add Employee</b></a></h4>
   </div>
 </div>
 <hr/>
-<div class="container">
-  <div class="col-md-7">
-    <div class="panel panel-primary">
-      <div class="panel-body">
-        <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
-          <div class="form-group">
-            <label for="fname">FirstName:</label>
-            <input formControlName="firstName" type="text" class="form-control" id="firstName" placeholder="Enter First Name">
-            <p *ngIf="employeeForm.get('firstName').touched && employeeForm.get('firstName').hasError('required')" style="color:tomato">This field is required!</p>
+<div class="col-md-7 col-xs-7 col-sd-7 ">
+  <div class="panel panel-primary">
+    <div class="panel-body">
+      <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="fname">FirstName:</label>
+          <input formControlName="firstName" type="text" class="form-control" id="firstName" placeholder="Enter First Name">
+          <p *ngIf="employeeForm.get('firstName').touched && employeeForm.get('firstName').hasError('required')" style="color:tomato">This field is required!</p>
+        </div>
+        <div class="form-group">
+          <label for="middleName">MiddleName:</label>
+          <input formControlName="middleName" type="text" class="form-control" id="middleName" placeholder="Enter Middle Name">
+          <p *ngIf="employeeForm.get('middleName').touched && employeeForm.get('middleName').hasError('required')" style="color:tomato">This field is required!</p>
+        </div>
+        <div class="form-group">
+          <label for="lastName">LastName:</label>
+          <input formControlName="lastName" type="text" class="form-control" id="lastName" placeholder="Enter Last Name">
+          <p *ngIf="employeeForm.get('lastName').touched && employeeForm.get('lastName').hasError('required')" style="color:tomato">This field is required!</p>
+        </div>
+        <div class="form-group">
+            <label for="emailId">EmaiId:</label>
+            <input formControlName="emailId" type="email" class="form-control" id="emailId" placeholder="Enter Email Id">
+             <p *ngIf="employeeForm.get('emailId').touched && employeeForm.get('emailId').hasError('required')"
+                style="color:tomato">This field is required!</p> 
           </div>
-          <div class="form-group">
-            <label for="middleName">MiddleName:</label>
-            <input formControlName="middleName" type="text" class="form-control" id="middleName" placeholder="Enter Middle Name">
-            <p *ngIf="employeeForm.get('middleName').touched && employeeForm.get('middleName').hasError('required')" style="color:tomato">This field is required!</p>
-          </div>
-          <div class="form-group">
-            <label for="lastName">LastName:</label>
-            <input formControlName="lastName" type="text" class="form-control" id="lastName" placeholder="Enter Last Name">
-            <p *ngIf="employeeForm.get('lastName').touched && employeeForm.get('lastName').hasError('required')" style="color:tomato">This field is required!</p>
-          </div>
-          <div class="form-group">
-            <label for="dob">Date Of  Birth:</label>
-            <input formControlName="dob" type="date" class="form-control" id="dob" placeholder="Enter Last Name">
-            <p *ngIf="employeeForm.get('dob').touched && employeeForm.get('dob').hasError('required')" style="color:tomato">This field is required!</p>
-          </div>
-          <div class="form-group">
-            <label for="gender">Gender:</label>
-            <select formControlName="gender" type="text" class="form-control" id="gender" placeholder="Enter Gender">
+        <div class="form-group">
+          <label for="dob">Date Of  Birth:</label>
+          <input formControlName="dob" type="date" class="form-control" id="dob" placeholder="Enter Date Of Birth">
+          <p *ngIf="employeeForm.get('dob').touched && employeeForm.get('dob').hasError('required')" style="color:tomato">This field is required!</p>
+        </div>
+        <div class="form-group">
+          <label for="gender">Gender:</label>
+          <select formControlName="gender" type="text" class="form-control" id="gender" placeholder="Enter Gender">
             <option [value]=0>MALE</option>
             <option [value]=1>FEMALE</option>
           </select>
-            <p *ngIf="employeeForm.get('gender').touched && employeeForm.get('gender').hasError('required')" style="color:tomato">This field is required!</p>
+          <p *ngIf="employeeForm.get('gender').touched && employeeForm.get('gender').hasError('required')" style="color:tomato">This field is required!</p>
+        </div>
+        <div formGroupName="address">
+          <div class="form-group">
+            <label for="line1">Address Line1:</label>
+            <input formControlName="line1" type="text" class="form-control" id="line1">
+             <p *ngIf="employeeForm.get('address').get('line1').touched && employeeForm.get('address').get('line1').hasError('required')"
+                style="color:tomato">This field is required!</p> 
           </div>
-          <div formArrayName="addresses">
-            <div formGroupName="0">
-              <div class="form-group">
-                <label for="line1">Address Line1:</label>
-                <input formControlName="line1" type="text" class="form-control" id="line1">
-                 <p *ngIf="employeeForm.get('addresses').get('0').get('line1').touched && employeeForm?.get('addresses').get('0').get('line1').hasError('required')"
-                  style="color:tomato">This field is required!</p> 
-              </div>
-              <div class="form-group">
-                <label for="line2"> Address Line2:</label>
-                <input formControlName="line2" type="text" class="form-control" id="line2">
-                 <p *ngIf="employeeForm.get('addresses').get('0').get('line2').touched && employeeForm.get('addresses').get('0').get('line2').hasError('required')"
-                  style="color:tomato">This field is required!</p> 
-              </div>
-              <div class="form-group">
-                <label for="city">City:</label>
-                <input formControlName="city" type="text" class="form-control" id="city" placeholder="Enter City">
-                 <p *ngIf="employeeForm.get('addresses').get('0').get('city').touched && employeeForm.get('addresses').get('0').get('city').hasError('required')"
-                  style="color:tomato">This field is required!</p> 
-              </div>
-              <div class="form-group">
-                <label for="state">State:</label>
-                <input formControlName="state" type="text" class="form-control" id="state" placeholder="Enter State">
-                 <p *ngIf="employeeForm.get('addresses').get('0').get('state').touched && employeeForm.get('addresses').get('0').get('state').hasError('required')"
-                  style="color:tomato">This field is required!</p> 
-              </div>
-              <div class="form-group">
-                <label for="country">Country:</label>
-                <input formControlName="country" type="text" class="form-control" id="country" placeholder="Enter Country">
-                 <p *ngIf="employeeForm.get('addresses').get('0').get('country').touched && employeeForm.get('addresses').get('0').get('country').hasError('required')"
-                  style="color:tomato">This field is required!</p> 
-              </div>
+          <div class="form-group">
+            <label for="line2"> Address Line2:</label>
+            <input formControlName="line2" type="text" class="form-control" id="line2">
+             <p *ngIf="employeeForm.get('address').get('line2').touched && employeeForm.get('address').get('line2').hasError('required')"
+                style="color:tomato">This field is required!</p> 
+          </div>
+          <div class="form-group">
+            <label for="city">City:</label>
+            <input formControlName="city" type="text" class="form-control" id="city" placeholder="Enter City">
+             <p *ngIf="employeeForm.get('address').get('city').touched && employeeForm.get('address').get('city').hasError('required')"
+                style="color:tomato">This field is required!</p> 
+          </div>
+          <div class="form-group">
+            <label for="state">State:</label>
+            <input formControlName="state" type="text" class="form-control" id="state" placeholder="Enter State">
+             <p *ngIf="employeeForm.get('address').get('state').touched && employeeForm.get('address').get('state').hasError('required')"
+                style="color:tomato">This field is required!</p> 
+          </div>
+          <div class="form-group">
+            <label for="country">Country:</label>
+            <input formControlName="country" type="text" class="form-control" id="country" placeholder="Enter Country">
+             <p *ngIf="employeeForm.get('address').get('country').touched && employeeForm.get('address').get('country').hasError('required')"
+                style="color:tomato">This field is required!</p> 
+          </div>
+          
+          <div class="form-group">
+            <label for="pincode">PinCode:</label>
+            <input formControlName="pincode" type="number" class="form-control" id="pincode" placeholder="Enter Pincode" />
+             <p *ngIf="employeeForm.get('address').get('pincode').touched && employeeForm.get('address').get('pincode').hasError('required')"
+                style="color:tomato">This field is required!</p> 
+          </div>
+        </div>
 
-              <div class="form-group">
-                <label for="pincode">PinCode:</label>
-                <input formControlName="pincode" type="number" class="form-control" id="pincode" placeholder="Enter Pincode" />
-                 <p *ngIf="employeeForm.get('addresses').get('0').get('pincode').touched && employeeForm.get('addresses').get('0').get('pincode').hasError('required')"
-                  style="color:tomato">This field is required!</p> 
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="salary">Salary:</label>
-            <input formControlName="salary" type="number" class="form-control" id="salary" placeholder="Enter Salary">
-             <p *ngIf="employeeForm.get('salary').touched && employeeForm.get('salary').hasError('required')" style="color:tomato">This field is required!</p> 
-          </div>
-          <div class="form-group">
-            <label for="designation">Designation:</label>
-            <input formControlName="designation" type="text" class="form-control" id="designation" placeholder="Enter Designation">
-            <p *ngIf="employeeForm.get('designation').touched && employeeForm.get('designation').hasError('required')" style="color:tomato">This field is required!</p>
-          </div>
-          <div class="form-group">
-            <label for="joiningDate">Joining Date:</label>
-            <input formControlName="joiningDate" type="date" class="form-control" id="joiningDate" placeholder="Enter Joining Date">
-            <p *ngIf="employeeForm.get('joiningDate').touched && employeeForm.get('joiningDate').hasError('required')" style="color:tomato">This field is required!</p>
-          </div>
-          <div class="form-group">
-            <label for="phoneNumber">Phone Number:</label>
-            <input formControlName="phoneNumber" type="text" class="form-control" id="phoneNumber" placeholder="Enter Phone Number">
-            <p *ngIf="employeeForm.get('phoneNumber').touched && employeeForm.get('phoneNumber').hasError('required')" style="color:tomato">This field is required!</p>
-          </div>
-          <div class="form-group">
-            <label for="manager">Manager:</label>
-            <input formControlName="manager" type="text" class="form-control" id="manager" placeholder="Enter Manager">
-            <p *ngIf="employeeForm.get('manager').touched && employeeForm.get('manager').hasError('required')" style="color:tomato">This field is required!</p>
-          </div>
-          <div formGroupName="department">
-            <div class="form-group">
-              <label for="department">Department:</label>
-              <select formControlName="deptId" type="text" class="form-control" id="deptId" placeholder="Enter Department">
+        <div class="form-group">
+          <label for="salary">Salary:</label>
+          <input formControlName="salary" type="number" class="form-control" id="salary" placeholder="Enter Salary">
+          <p *ngIf="employeeForm.get('salary').touched && employeeForm.get('salary').hasError('required')" style="color:tomato">This field is required!</p>
+        </div>
+        <div class="form-group">
+          <label for="designation">Designation:</label>
+          <input formControlName="designation" type="text" class="form-control" id="designation" placeholder="Enter Designation">
+          <p *ngIf="employeeForm.get('designation').touched && employeeForm.get('designation').hasError('required')" style="color:tomato">This field is required!</p>
+        </div>
+        <div class="form-group">
+          <label for="joiningDate">Joining Date:</label>
+          <input formControlName="joiningDate" type="date" class="form-control" id="joiningDate" placeholder="Enter Joining Date">
+          <p *ngIf="employeeForm.get('joiningDate').touched && employeeForm.get('joiningDate').hasError('required')" style="color:tomato">This field is required!</p>
+        </div>
+        <div class="form-group">
+          <label for="leavingDate">Leaving Date:</label>
+          <input formControlName="leavingDate" type="date" class="form-control" id="leavingDate" placeholder="Enter Leaving Date">
+          <p *ngIf="employeeForm.get('leavingDate').touched && employeeForm.get('leavingDate').hasError('required')" style="color:tomato">This field is required!</p>
+        </div>
+        <div class="form-group">
+          <label for="phoneNumber">Phone Number:</label>
+          <input formControlName="phoneNumber" type="text" class="form-control" id="phoneNumber" placeholder="Enter Phone Number">
+          <p *ngIf="employeeForm.get('phoneNumber').touched && employeeForm.get('phoneNumber').hasError('required')" style="color:tomato">This field is required!</p>
+        </div>
+        <div class="form-group">
+          <label for="manager">Manager Id:</label>
+          <input formControlName="manager" type="text" class="form-control" id="manager" placeholder="Enter Manager">
+          <p *ngIf="employeeForm.get('manager').touched && employeeForm.get('manager').hasError('required')" style="color:tomato">This field is required!</p>
+        </div>
+
+        <div class="form-group">
+          <label for="project">Project:</label>
+          <select formControlName="pid" type="text" class="form-control" id="pid" placeholder="Enter Project">
+            <option *ngFor="let project of projects" [value]="project.pid">{{project.title}}</option>
+            </select>
+        </div>
+
+
+
+        <div class="form-group">
+          <label for="department">Department:</label>
+          <select formControlName="deptId" type="text" class="form-control" id="deptId" placeholder="Enter Department">
             <option *ngFor="let department of departments" [value]="department.deptId">{{department.deptName}}</option>
             </select>
-            </div>
-          </div>
-          <div formGroupName="client">
-            <div class="form-group">
-              <label for="client">Client:</label>
-              <select formControlName="cid" type="text" class="form-control" id="cid" placeholder="Enter Client">
+        </div>
+
+
+
+        <div class="form-group">
+          <label for="client">Client:</label>
+          <select formControlName="cid" type="text" class="form-control" id="cid" placeholder="Enter Client">
                <option *ngFor="let client of clients" [value]="client.cid">{{client.name}}</option>
-              </select>
-            </div>
-          </div>
-          <button [disabled]="!employeeForm.valid" class="btn btn-primary" type="submit">Submit</button>
-        </form>
-      </div>
+          </select>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </form>
     </div>
   </div>
 </div>

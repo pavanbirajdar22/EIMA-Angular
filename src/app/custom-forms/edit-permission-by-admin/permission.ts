@@ -10,5 +10,6 @@ export class Permission {
     editProject:boolean
     editClient:boolean
     editDepartment:boolean
+    generateReport:boolean
 }
 

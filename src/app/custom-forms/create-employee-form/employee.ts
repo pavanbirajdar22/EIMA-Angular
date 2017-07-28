@@ -1,3 +1,4 @@
+import { Department } from '../create-department-form/department'; 
 export class Employee {
 
     eid:number;
@@ -5,12 +6,17 @@ export class Employee {
     firstName:string;
     middleName:string;
     lastName:string;
+    dob:Date;
     joiningDate:Date;
     leavingDate:Date;
     phoneNumber:string;
     salary:number;
-    address:any[];
-    client:any[];
-    manager:Employee;
-    projects:any
+    address:any;
+    manager:any;
+    projects:any;
+    gender:number
+    deptId:number
+    cid:number
+    pid:number
+    emailId:string
 }

@@ -35,7 +35,8 @@ export class EditPermissionByAdminComponent implements OnInit {
         deleteUser: [this.permission.deleteUser],
         editProject: [this.permission.editProject],
         editClient: [this.permission.editClient],
-        editDepartment: [this.permission.editDepartment]
+        editDepartment: [this.permission.editDepartment],
+        generateReport: [this.permission.generateReport]
       })
 
     })

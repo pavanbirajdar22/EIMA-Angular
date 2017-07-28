@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Validators, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { CreateEmployeeService } from './create-employee.service';
 import { MdSnackBar } from "@angular/material"
-import { Validators, FormBuilder, FormControl, FormGroup, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-create-employee-form',
@@ -13,6 +13,7 @@ export class CreateEmployeeFormComponent implements OnInit {
   employeeForm: FormGroup
   clients: any[];
   departments: any[];
+  projects: any[]
   constructor(private fb: FormBuilder, private service: CreateEmployeeService, private snackBar: MdSnackBar) { }
 
   openSnackBar(message: string, action: string) {
@@ -27,29 +28,27 @@ export class CreateEmployeeFormComponent implements OnInit {
       firstName: ['', [Validators.required]],
       middleName: [''],
       lastName: ['', [Validators.required]],
-      dob:['',Validators.required],
-      gender:[,Validators.required],
-      addresses: this.fb.array([
-        this.fb.group({
+      emailId: ['', Validators.required],
+      dob: ['', Validators.required],
+      gender: [, Validators.required],
+      address: this.fb.group({
         city: ['', Validators.required],
         country: ['', Validators.required],
         line1: ['', Validators.required],
-        line2: [''],
+        line2: ['', Validators.required],
         pincode: ['', Validators.required],
         state: ['', Validators.required]
-      })]),
+      }),
       salary: ['', Validators.required],
       joiningDate: ['', Validators.required],
-      leavingDate: [''],
+      leavingDate: ['', Validators.required],
       designation: ['', Validators.required],
-      manager: ['',Validators.required],
+      manager: [, Validators.required],
       phoneNumber: ['', Validators.required],
-      department:this.fb.group({
-        deptId:['',Validators.required]
-      }),
-      client:this.fb.group({
-       cid:['',Validators.required],
-      })
+      pid: ['', Validators.required],
+      deptId: ['', Validators.required],
+      cid: ['', Validators.required],
+
     })
 
     this.service.getAllClients().subscribe(ele => {
@@ -62,17 +61,20 @@ export class CreateEmployeeFormComponent implements OnInit {
       console.log(ele)
     })
 
+    this.service.getAllProjects().subscribe(ele => {
+      this.projects = ele._embedded.projects;
+      console.log(ele)
+    })
   }
 
   onSubmit() {
-
     console.log(this.employeeForm.value)
     this.service.createEmployee(this.employeeForm.value).subscribe(ele => {
 
-      if (ele.status === 201) {
-        this.openSnackBar("Employee","Added Successfully")
+      if (ele.status === 201 || ele.status === 200) {
+        this.openSnackBar("Employee", "Added Successfully")
       }
     });
-   }
+  }
 
 }

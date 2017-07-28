@@ -100,6 +100,15 @@
                 </md-radio-group>
               </td>
             </tr>
+            <tr>
+              <td><b>Generate Report</b></td>
+              <td>
+                <md-radio-group formControlName="generateReport">
+                  <md-radio-button [value]=1> Grant </md-radio-button>
+                  <md-radio-button [value]=0 style="margin-left:10px"> Revoke </md-radio-button>
+                </md-radio-group>
+              </td>
+            </tr>
           </tbody>
         </table>
         <button class="btn btn-primary">SUBMIT</button>
