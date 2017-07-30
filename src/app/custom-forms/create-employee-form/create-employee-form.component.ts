@@ -70,10 +70,7 @@ export class CreateEmployeeFormComponent implements OnInit {
   onSubmit() {
     console.log(this.employeeForm.value)
     this.service.createEmployee(this.employeeForm.value).subscribe(ele => {
-
-      if (ele.status === 201 || ele.status === 200) {
-        this.openSnackBar("Employee", "Added Successfully")
-      }
+      this.openSnackBar("Employee", "Added Successfully");
     });
   }
 
